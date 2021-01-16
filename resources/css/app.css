@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-link {
+  @apply px-28 md:py-2 md:px-4 md:hover:text-white md:hover:bg-blue-500 transition duration-500 ease-in-out;
+}
+
+.nav-item {
+  @apply w-full border-b border-white md:border-none md:w-auto py-5 md:py-0 bg-blue-100 md:bg-transparent;
+}
+
+.login {
+  @apply bg-gray-700 text-white rounded-lg py-2 px-28 md:px-5 hover:bg-blue-500 transition duration-500 ease-in-out;
+}
