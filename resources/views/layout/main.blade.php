@@ -31,7 +31,7 @@
         </div>
 
         <nav class="md:inline" :class="isOpen ? 'show' : 'hidden'" @click.away="isOpen = false">
-            <ul class="flex flex-col md:flex-row text-xl md:text-lg font-bold font-sans text-center md:text-left h-auto items-center">
+            <ul class="menu">
                 <li class="mt-5 md:mt-0 nav-item"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
@@ -41,6 +41,12 @@
             </ul>
         </nav>
     </header>
+    <div class="bg-gradient-to-r from-blue-800 to-blue-500">
+        <div class="noteworthy">
+            <h2 class="text-2xl uppercase font-bold tracking-wider text-white">Oh, yes! 2020 is finally over!</h2>
+            <a href="#" class="noteworthy--btn">And here is my Top-10</a>
+        </div>
+    </div>
 
     @yield('content')
     <script src="{{ asset('js/app.js') }}"></script>

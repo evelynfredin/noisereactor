@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.menu {
+  @apply flex flex-col md:flex-row text-xl md:text-lg font-bold font-sans text-center md:text-left h-auto items-center;
+}
+
 .nav-link {
   @apply px-28 md:py-2 md:px-4 md:hover:text-white md:hover:bg-blue-500 transition duration-500 ease-in-out;
 }
@@ -11,5 +15,13 @@
 }
 
 .login {
-  @apply bg-gray-700 text-white rounded-lg py-2 px-28 md:px-5 hover:bg-blue-500 transition duration-500 ease-in-out;
+  @apply bg-gray-700 text-white rounded-lg py-2 px-28 md:px-5 shadow-lg hover:bg-blue-500 transition duration-500 ease-in-out;
+}
+
+.noteworthy {
+  @apply container max-w-7xl mx-auto h-auto md:items-center p-5 flex flex-col md:flex-row;
+}
+
+.noteworthy--btn {
+  @apply bg-gray-100 rounded-lg px-4 py-2 md:ml-5 mt-2 md:mt-0 text-center w-1/2 shadow-lg md:w-auto font-semibold uppercase hover:bg-gray-700 hover:text-gray-50 transition duration-500 ease-in-out;
 }
