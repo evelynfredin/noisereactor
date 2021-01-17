@@ -38,7 +38,41 @@
                     <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Artists</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Genres</a></li>
+
+                    @guest
                     <li class="md:ml-1 mt-10 md:mt-0 md:w-auto"><a class="btn bg-gray-700 hover:bg-blue-500" href="{{ route('login') }}">Log in</a></li>
+                    @endguest
+
+                    @auth
+                    <li class="md:ml-1 mt-10 md:mt-0 md:w-auto">
+                        <div class="flex justify-center">
+                            <!-- Dropdown -->
+                            <div x-data="{ open: false }" class="relative">
+                                <button x-on:click="open = true" class="block h-10 w-10 rounded-full overflow-hidden focus:outline-none">
+                                    <img class="h-full w-full object-cover" src="img/ev.jpg" alt="avatar">
+                                </button>
+                                <!-- Dropdown Body -->
+                                <div x-show.transition="open" x-on:click.away="open = false" class="modal">
+                                    <a href="#" class="modal--item">Add new album</a>
+                                    <div>
+                                        <hr>
+                                    </div>
+                                    <a href="#" class="modal--item">Add new artist</a>
+                                    <div>
+                                        <hr>
+                                    </div>
+                                    <form action="{{ route('logout') }}" method="post">
+                                        @csrf
+                                        <button class="modal--item w-full text-left" type="submit">Log out</button>
+                                    </form>
+                                </div>
+                                <!-- // Dropdown Body -->
+                            </div>
+                            <!-- // Dropdown -->
+                        </div>
+                    </li>
+                    @endauth
+
                 </ul>
             </nav>
         </header>

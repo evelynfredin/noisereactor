@@ -33,3 +33,11 @@
 .input {
   @apply w-full p-2 bg-gray-50 border rounded-xl mb-5 border-blue-500;
 }
+
+.modal {
+  @apply absolute right-0 w-40 text-sm font-light bg-white border rounded shadow-xl;
+}
+
+.modal--item {
+  @apply transition-colors duration-200 block px-4 py-2 text-gray-900 hover:bg-blue-500 hover:text-white;
+}
