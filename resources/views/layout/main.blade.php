@@ -33,10 +33,10 @@
 
             <nav class="md:inline" :class="isOpen ? 'show' : 'hidden'" @click.away="isOpen = false">
                 <ul class="menu">
-                    <li class="mt-5 md:mt-0 nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="mt-5 md:mt-0 nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Collection</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Artists</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('artists') }}">Artists</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Genres</a></li>
 
                     @guest
