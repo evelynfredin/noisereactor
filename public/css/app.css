@@ -31238,17 +31238,7 @@ video {
   }
 }
 
-.login {
-  --tw-bg-opacity: 1;
-  background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
-}
-
-.login:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
-}
-
-.login {
+.btn {
   border-radius: 0.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -31266,7 +31256,7 @@ video {
 }
 
 @media (min-width: 768px) {
-  .login {
+  .btn {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
@@ -31310,10 +31300,6 @@ video {
   display: flex;
   flex-direction: column;
   height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 80rem;
-  padding: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -31367,6 +31353,25 @@ video {
     margin-left: 1.25rem;
     width: auto;
   }
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+  padding: 1.25rem;
+}
+
+.input {
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+  --tw-border-opacity: 1;
+  border-color: rgba(59, 130, 246, var(--tw-border-opacity));
+  border-radius: 0.75rem;
+  border-width: 1px;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem;
+  width: 100%;
 }
 
 @media (min-width: 640px) {

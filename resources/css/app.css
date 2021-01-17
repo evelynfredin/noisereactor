@@ -14,14 +14,22 @@
   @apply w-full border-b border-white md:border-none md:w-auto py-5 md:py-0 bg-blue-100 md:bg-transparent;
 }
 
-.login {
-  @apply bg-gray-700 text-white rounded-lg py-2 px-28 md:px-5 shadow-lg hover:bg-blue-500 transition duration-500 ease-in-out;
+.btn {
+  @apply text-white rounded-lg py-2 px-28 md:px-5 shadow-lg transition duration-500 ease-in-out;
 }
 
 .noteworthy {
-  @apply container max-w-7xl mx-auto h-auto md:items-center p-5 flex flex-col md:flex-row;
+  @apply container  h-auto md:items-center flex flex-col md:flex-row;
 }
 
 .noteworthy--btn {
   @apply bg-gray-100 rounded-lg px-4 py-2 md:ml-5 mt-2 md:mt-0 text-center w-1/2 shadow-lg md:w-auto font-semibold uppercase hover:bg-gray-700 hover:text-gray-50 transition duration-500 ease-in-out;
+}
+
+.content {
+  @apply mx-auto max-w-7xl p-5;
+}
+
+.input {
+  @apply w-full p-2 bg-gray-50 border rounded-xl mb-5 border-blue-500;
 }
