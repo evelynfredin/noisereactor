@@ -31416,6 +31416,17 @@ video {
   transition-duration: 200ms;
 }
 
+.heading--3 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgba(59, 130, 246, var(--tw-text-opacity));
+  text-transform: uppercase;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

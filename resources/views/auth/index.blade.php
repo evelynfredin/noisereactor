@@ -3,7 +3,7 @@
 
 <section class="flex justify-center">
     <div class="bg-gray-100 p-10 w-full md:max-w-lg shadow-sm">
-        <h3 class="uppercase font-bold text-blue-500 text-center text-xl mb-5">Login to your account</h3>
+        <h3 class="heading--3">Login to your account</h3>
 
         @if(session('status'))
         <div class="bg-red-600 text-white text-center p-3 mb-5">

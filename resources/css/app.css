@@ -41,3 +41,7 @@
 .modal--item {
   @apply transition-colors duration-200 block px-4 py-2 text-gray-900 hover:bg-blue-500 hover:text-white;
 }
+
+.heading--3 {
+  @apply uppercase font-bold text-blue-500 text-center text-xl mb-5;
+}

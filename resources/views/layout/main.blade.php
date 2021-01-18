@@ -49,7 +49,7 @@
                             <!-- Dropdown -->
                             <div x-data="{ open: false }" class="relative">
                                 <button x-on:click="open = true" class="block h-10 w-10 rounded-full overflow-hidden focus:outline-none">
-                                    <img class="h-full w-full object-cover" src="img/ev.jpg" alt="avatar">
+                                    <img class="h-full w-full object-cover" src="{{ asset('img/ev.jpg') }}" alt="avatar">
                                 </button>
                                 <!-- Dropdown Body -->
                                 <div x-show.transition="open" x-on:click.away="open = false" class="modal">
@@ -57,7 +57,7 @@
                                     <div>
                                         <hr>
                                     </div>
-                                    <a href="#" class="modal--item">Add new artist</a>
+                                    <a href="{{ route('new.artist') }}" class="modal--item">Add new artist</a>
                                     <div>
                                         <hr>
                                     </div>

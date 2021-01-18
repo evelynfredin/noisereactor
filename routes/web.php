@@ -19,4 +19,5 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 // Content (Artists, Albums and Blogs)
 // Artists
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists');
-Route::get('/new/artist', [ArtistController::class, 'store'])->name('new.artist');
+Route::get('/new/artist', [ArtistController::class, 'submit'])->name('new.artist');
+Route::post('/new/artist', [ArtistController::class, 'store']);
