@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Content\ArtistController;
+use App\Http\Controllers\Grouping\GenreController;
 use App\Models\Artist;
+use App\Models\Genre;
 
 Route::get('/', function () {
     return view('index');
@@ -21,3 +23,9 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists');
 Route::get('/new/artist', [ArtistController::class, 'submit'])->name('new.artist');
 Route::post('/new/artist', [ArtistController::class, 'store']);
+
+// Single artist page
+Route::get('/artist/{artist:name}', [ArtistController::class, 'show'])->name('show.artist');
+
+// Grouping (by Genres (Artists) by Category (Blogs))
+Route::get('/genres', [GenreController::class, 'index'])->name('genres');

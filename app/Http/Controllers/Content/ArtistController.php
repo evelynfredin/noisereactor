@@ -44,4 +44,12 @@ class ArtistController extends Controller
 
         return redirect()->route('artists')->with('newartist', 'A new artist has been created!');
     }
+
+    public function show(Artist $artist)
+    {
+        $artist = Artist::with('genres')->findOrFail($artist->id);
+        return view('artist.show', [
+            'artist' => $artist
+        ]);
+    }
 }
