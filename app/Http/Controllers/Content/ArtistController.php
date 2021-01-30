@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Content;
 use App\Models\Artist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Genre;
 
 class ArtistController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('submit');
+        $this->middleware('auth')->only('submit', 'edit', 'update');
     }
 
     public function index()
@@ -51,5 +52,48 @@ class ArtistController extends Controller
         return view('artist.show', [
             'artist' => $artist
         ]);
+    }
+
+    public function uid($name)
+    {
+        $name = $this->name;
+
+        return strtolower(str_replace('%20', '-', $name));
+    }
+
+    public function edit(Artist $artist)
+    {
+        return view('artist.edit', [
+            'artist' => $artist
+        ]);
+    }
+
+    public function update(Artist $artist, Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'string|required',
+            'website' => 'url|nullable',
+            'bio' => 'string|nullable',
+            'slug' => 'string|required',
+            'pic' => 'image|nullable|mimes:png,jpg,jpeg',
+        ]);
+
+        if ($request->pic !== null) {
+            $artist->update([
+                'name' => $request->name,
+                'website' => $request->website,
+                'bio' => $request->bio,
+                'slug' => $request->slug,
+                'pic' => $request->pic->store('uploads/artist')
+            ]);
+        } else {
+            $artist->update([
+                'name' => $request->name,
+                'website' => $request->website,
+                'bio' => $request->bio,
+                'slug' => $request->slug,
+            ]);
+        }
+        return redirect('/artist/' . $artist->slug)->with('status', 'Artist has been updated.');
     }
 }
