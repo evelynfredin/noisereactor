@@ -48,18 +48,6 @@
 
         </div>
 
-        <div>
-            <label class="block" for="pic">Artist picture</label>
-            <input class="input" type="file" name="pic" id="pic" accept="image/jpeg, image/jpg, image/png">
-
-            @error('pic')
-            <div class="bg-red-600 text-white text-center p-3 mb-5">
-                {{ $message }}
-            </div>
-            @enderror
-
-        </div>
-
         <button class="btn my-5 bg-blue-500 hover:bg-gray-700" type="submit">Add new artist</button>
 
     </form>

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Content;
 
+use App\Models\Genre;
 use App\Models\Artist;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Genre;
 
 class ArtistController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('submit', 'edit', 'update');
+        $this->middleware('auth')->only('submit', 'edit', 'update', 'destroy');
     }
 
     public function index()
@@ -32,15 +33,14 @@ class ArtistController extends Controller
         $this->validate($request, [
             'name' => 'required|string',
             'bio' => 'required',
-            'website' => 'required|url',
-            'pic' => 'image|mimes:png,jpg,jpeg|max:2048'
+            'website' => 'required|url'
         ]);
 
         Artist::create([
             'name' => $request->name,
             'bio' => $request->bio,
             'website' => $request->website,
-            'pic' => $request->pic->store('uploads/artist')
+            'slug' => Str::of($request->name)->slug('-')
         ]);
 
         return redirect()->route('artists')->with('newartist', 'A new artist has been created!');
@@ -52,13 +52,6 @@ class ArtistController extends Controller
         return view('artist.show', [
             'artist' => $artist
         ]);
-    }
-
-    public function uid($name)
-    {
-        $name = $this->name;
-
-        return strtolower(str_replace('%20', '-', $name));
     }
 
     public function edit(Artist $artist)
@@ -75,7 +68,7 @@ class ArtistController extends Controller
             'website' => 'url|nullable',
             'bio' => 'string|nullable',
             'slug' => 'string|required',
-            'pic' => 'image|nullable|mimes:png,jpg,jpeg',
+            'pic' => 'image|nullable|mimes:png,jpg,jpeg|max:2048',
         ]);
 
         if ($request->pic !== null) {
@@ -95,5 +88,11 @@ class ArtistController extends Controller
             ]);
         }
         return redirect('/artist/' . $artist->slug)->with('status', 'Artist has been updated.');
+    }
+
+    public function destroy(Artist $artist)
+    {
+        $artist->delete();
+        return redirect('artists')->with('status', 'Artist has been deleted.');
     }
 }

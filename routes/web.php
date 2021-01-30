@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-// Loggin in and loggin out
+// Auth
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::post('/login', [LoginController::class, 'store']);
@@ -31,6 +31,8 @@ Route::post('/new/artist', [ArtistController::class, 'store']);
 
 Route::get('/edit/artist/{artist:id}', [ArtistController::class, 'edit'])->name('edit.artist');
 Route::put('/edit/artist/{artist:id}', [ArtistController::class, 'update']);
+
+Route::delete('/delete/artist/{artist:id}', [ArtistController::class, 'destroy'])->name('destroy.artist');
 
 // Single artist page
 Route::get('/artist/{artist:slug}', [ArtistController::class, 'show'])->name('show.artist');
