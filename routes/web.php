@@ -6,12 +6,11 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Content\ArtistController;
 use App\Http\Controllers\Grouping\GenreController;
+use App\Http\Controllers\HomeController;
 use App\Models\Artist;
 use App\Models\Genre;
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Auth
 Route::get('/login', [LoginController::class, 'index'])->name('login');

@@ -31427,6 +31427,68 @@ video {
   text-transform: uppercase;
 }
 
+.album {
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 700ms;
+}
+
+@media (min-width: 768px) {
+  .album {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .album:hover {
+    --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
+  }
+}
+
+.album-info {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  height: auto;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  position: absolute;
+  top: 0px;
+  width: auto;
+  transform: translate(-100%, -100%) rotate(-90deg);
+  transform-origin: right bottom;
+  left: 15%;
+}
+
+.album-tr {
+  transform: translate(-100%, -100%) rotate(-90deg);
+  transform-origin: right bottom;
+  left: 15%;
+}
+
+.cover {
+  width: 333.33%;
+  padding-left: 16%;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

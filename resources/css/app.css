@@ -45,3 +45,26 @@
 .heading--3 {
   @apply uppercase font-bold text-blue-500 text-center text-xl mb-5;
 }
+
+.album {
+  @apply flex flex-col md:mt-10 p-4 rounded-lg transform lg:hover:scale-110 lg:hover:shadow-2xl transition-all duration-700 ease-in-out;
+}
+
+.album-info {
+  @apply absolute flex flex-col justify-center h-auto items-baseline top-0 w-auto album-tr text-lg;
+}
+
+.album-tr {
+  -webkit-transform: translate(-100%, -100%) rotate(-90deg);
+  -ms-transform: translate(-100%, -100%) rotate(-90deg);
+  transform: translate(-100%, -100%) rotate(-90deg);
+  -webkit-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  transform-origin: right bottom;
+  left: 15%;
+}
+
+.cover {
+  width: 333.33%;
+  padding-left: 16%;
+}
