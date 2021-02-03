@@ -9,7 +9,7 @@
 
 <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-5">
     @foreach ($artists as $artist)
-    <div class="bg-white rounded overflow-hidden shadow-sm relative hover:shadow-lg">
+    <div class="bg-white rounded overflow-hidden shadow-sm border relative hover:shadow-lg">
         <a href="{{ route('show.artist', $artist->slug) }}">
             <img src="{{ $artist->pic }}" alt="{{ $artist->name }}" class="w-full h-full sm:h-52 object-cover">
             <div class="bg-white text-secondary-200 rounded-full py-1 px-2 absolute bottom-0 right-0 m-2 mt-2">

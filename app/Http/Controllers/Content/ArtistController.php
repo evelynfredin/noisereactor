@@ -43,7 +43,7 @@ class ArtistController extends Controller
             'slug' => Str::of($request->name)->slug('-')
         ]);
 
-        return redirect()->route('artists')->with('newartist', 'A new artist has been created!');
+        return redirect()->route('artists')->with('status', 'A new artist has been created!');
     }
 
     public function show(Artist $artist)

@@ -40,7 +40,7 @@
             <label class="block" for="website">Artist website:</label>
             <input class="input" type="url" name="website" id="website" value="{{ old('website') }}">
 
-            @error('bio')
+            @error('website')
             <div class="bg-red-600 text-white text-center p-3 mb-5">
                 {{ $message }}
             </div>

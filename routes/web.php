@@ -4,9 +4,11 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Content\AlbumController;
 use App\Http\Controllers\Content\ArtistController;
 use App\Http\Controllers\Grouping\GenreController;
 use App\Http\Controllers\HomeController;
+use App\Models\Album;
 use App\Models\Artist;
 use App\Models\Genre;
 
@@ -29,9 +31,17 @@ Route::get('/new/artist', [ArtistController::class, 'submit'])->name('new.artist
 Route::post('/new/artist', [ArtistController::class, 'store']);
 
 Route::get('/edit/artist/{artist:id}', [ArtistController::class, 'edit'])->name('edit.artist');
+
 Route::put('/edit/artist/{artist:id}', [ArtistController::class, 'update']);
 
 Route::delete('/delete/artist/{artist:id}', [ArtistController::class, 'destroy'])->name('destroy.artist');
+
+// Albums
+Route::get('/albums', [AlbumController::class, 'index'])->name('albums');
+
+Route::get('/new/album', [AlbumController::class, 'submit'])->name('new.album');
+
+Route::post('/new/album', [AlbumController::class, 'store']);
 
 // Single artist page
 Route::get('/artist/{artist:slug}', [ArtistController::class, 'show'])->name('show.artist');
