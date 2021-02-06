@@ -32,7 +32,7 @@
 
 </div>
 
-@else {{'Nothing to show'}}
+@else {{ ('Nothing to show') }}
 @endif
 
 @endsection

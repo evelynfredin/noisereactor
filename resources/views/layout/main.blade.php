@@ -39,7 +39,6 @@
                     <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('albums') }}">Collection</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('artists') }}">Artists</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('genres') }}">Genres</a></li>
 
                     @guest
                     <li class="md:ml-1 mt-10 md:mt-0 md:w-auto"><a class="btn bg-gray-700 hover:bg-blue-500" href="{{ route('login') }}">Log in</a></li>

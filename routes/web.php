@@ -21,7 +21,6 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-
 // Content (Artists, Albums and Blogs)
 // Artists
 Route::get('/artists', [ArtistController::class, 'index'])->name('artists');
@@ -36,6 +35,9 @@ Route::put('/edit/artist/{artist:id}', [ArtistController::class, 'update']);
 
 Route::delete('/delete/artist/{artist:id}', [ArtistController::class, 'destroy'])->name('destroy.artist');
 
+// Single artist page
+Route::get('/artist/{artist:slug}', [ArtistController::class, 'show'])->name('show.artist');
+
 // Albums
 Route::get('/albums', [AlbumController::class, 'index'])->name('albums');
 
@@ -43,8 +45,15 @@ Route::get('/new/album', [AlbumController::class, 'submit'])->name('new.album');
 
 Route::post('/new/album', [AlbumController::class, 'store']);
 
-// Single artist page
-Route::get('/artist/{artist:slug}', [ArtistController::class, 'show'])->name('show.artist');
+// Single album page
+Route::get('/album/{album:id}', [AlbumController::class, 'show'])->name('show.album');
+
+Route::get('/edit/album/{album:id}', [AlbumController::class, 'edit'])->name('edit.album');
+
+Route::put('/edit/album/{album:id}', [AlbumController::class, 'update']);
+
+Route::delete('/delete/album/{album:id}', [AlbumController::class, 'destroy'])->name('destroy.album');
+
 
 // Grouping (by Genres (Artists) by Category (Blogs))
 Route::get('/genres', [GenreController::class, 'index'])->name('genres');

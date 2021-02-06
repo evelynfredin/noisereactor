@@ -15,7 +15,7 @@ class Album extends Model
         'description',
         'artist_id',
         'cover',
-        'released-_at'
+        'released_at'
     ];
 
     public function artist()

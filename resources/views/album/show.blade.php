@@ -1,35 +1,31 @@
 @extends('layout.main')
 @section('content')
 
+<div class="lg:max-w-5xl mx-auto">
 @if(Session::has('status'))
     <div class="bg-green-500 text-gray-50">
         <p class="py-2 px-3">{{Session::get('status')}}</p>
     </div>
 @endif
+</div>
 
-<section class="mt-5">
-    <h2 class="text-3xl font-bold mb-5">{{ $artist->name }} <span class="font-normal text-xl ml-3">
-        <a class="hover:text-blue-700" href="{{ $artist->website }}">{{ @parse_url($artist->website)['host'] }}</a></span>
-    </h2>
-    <div class="flex flex-col md:flex-row">
-        <div class="w-full md:w-2/3 h-auto">
-            <img src="{{ URL::asset($artist->pic) }}" alt="{{ $artist->name }}" class="w-full h-full object-cover">
-        </div>
-        <div class="w-full mt-5 md:mt-0 md:w-1/3 md:ml-10">
-            <div >{{ $artist->bio }}</div>
-            <div>
-                <h3 class="text-xl font-bold mt-3">Genres</h3>
-                @foreach ($artist->genres as $genre)
-                    <p class="bg-blue-300 inline-block px-3 py-2 rounded-3xl mt-3 mr-2">{{ $genre->genre }}</p>
-                @endforeach
-            </div>
-        </div>
+<section class="album-container">
+    <div class="border rounded-lg w-80">
+        <img src="{{ URL::asset( $album->cover )}}" alt="{{ $album->name }}" class="rounded-lg shadow-lg">
+    </div>
+    <div class="album-container--info">
+        <h1 class="text-2xl md:text-4xl font-bold uppercase">{{ $album->artist->name }}</h1>
+        <h2 class="text-xl md:text-3xl font-bold uppercase text-blue-500">{{ $album->name }}</h2>
+        <p class="mb-3 text-sm font-light">{{ $album->edition }}</p>
+        <p class="block border-t pt-3 text-lg">{{ $album->description }}</p>
     </div>
 </section>
 
+
 @auth
-<div class="my-5 flex">
-    <form action="{{ route('edit.artist', $artist->id) }}" method="get">
+<!-- Edit and delete buttons -->
+<div class="my-5 lg:max-w-5xl mx-auto flex">
+    <form action="{{ route('edit.album', $album->id) }}" method="get">
         @csrf
         <button class="p-2 bg-green-500 text-gray-50 hover:bg-green-700" type="submit"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
     </form>
@@ -52,27 +48,39 @@
             x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0"
         >
-        <div class="w-auto mx-auto rounded p-4 mt-2 overflow-y-auto">
-            <div class="bg-white rounded px-8 py-8">
-                <h1 class="font-bold text-xl mb-3">Are you sure?</h1>
-                <div class="mt-4 flex">
-                    <button
-                        class="bg-green-600 text-white px-4 py-3 mt-4 text-sm rounded mr-1"
-                        @click="isOpen = false"
-                        x-ref="modalCloseButton"
-                    >
-                        Cancel
-                    </button>
+            <div class="w-auto mx-auto rounded p-4 mt-2 overflow-y-auto">
+                <div class="bg-white rounded px-8 py-8">
+                    <h1 class="font-bold text-xl mb-3">Are you sure?</h1>
+                    <div class="mt-4 flex">
+                        <button
+                            class="bg-green-600 text-white px-4 py-3 mt-4 text-sm rounded mr-1"
+                            @click="isOpen = false"
+                            x-ref="modalCloseButton"
+                            >
+                            Cancel
+                        </button>
 
-                    <form action="{{ route('destroy.artist', $artist->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="bg-red-600 text-white px-4 py-3 mt-4 text-sm rounded ml-1" type="submit">Delete</button>
-                    </form>
+                        <form action="{{ route('destroy.album', $album->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-red-600 text-white px-4 py-3 mt-4 text-sm rounded ml-1" type="submit">Delete</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<section class="block">
+    @foreach ($artist->albums as $discography)
+
+        <p>{{ $discography->name }}</p>
+
+    @endforeach
+</section>
+
+
 @endauth
+
 @endsection

@@ -23,7 +23,7 @@
 }
 
 .noteworthy--btn {
-  @apply bg-gray-100 rounded-lg px-4 py-2 md:ml-5 mt-2 md:mt-0 text-center w-1/2 shadow-lg md:w-auto font-semibold uppercase hover:bg-gray-700 hover:text-gray-50 transition duration-500 ease-in-out;
+  @apply bg-gray-100 rounded-lg px-4 py-2 md:ml-5 mt-2 md:mt-0 text-center w-auto shadow-lg md:w-auto font-semibold uppercase hover:bg-gray-700 hover:text-gray-50 transition duration-500 ease-in-out;
 }
 
 .content {
@@ -51,7 +51,7 @@
 }
 
 .album-info {
-  @apply absolute flex flex-col justify-center h-auto items-baseline top-0 w-auto album-tr text-lg;
+  @apply absolute flex flex-col justify-center h-auto items-baseline top-0 w-auto album-tr;
 }
 
 .album-tr {
@@ -67,4 +67,12 @@
 .cover {
   width: 333.33%;
   padding-left: 16%;
+}
+
+.album-container {
+  @apply mt-5 lg:max-w-5xl flex flex-col items-center lg:items-end lg:flex-row mx-auto;
+}
+
+.album-container--info {
+  @apply flex flex-col justify-end mx-auto w-full md:max-w-2xl lg:w-2/3 mt-10 lg:mt-0 lg:ml-7 bg-white px-10 lg:px-5 pt-10 pb-5 rounded-lg;
 }

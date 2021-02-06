@@ -17,7 +17,7 @@ class ArtistController extends Controller
 
     public function index()
     {
-        $artists = Artist::get();
+        $artists = Artist::with('albums')->get();
         return view('artist.index', [
             'artists' => $artists
         ]);
@@ -87,12 +87,12 @@ class ArtistController extends Controller
                 'slug' => $request->slug,
             ]);
         }
-        return redirect('/artist/' . $artist->slug)->with('status', 'Artist has been updated.');
+        return redirect('/artist/' . $artist->slug)->with('status', 'The artist has been updated.');
     }
 
     public function destroy(Artist $artist)
     {
         $artist->delete();
-        return redirect('artists')->with('status', 'Artist has been deleted.');
+        return redirect('artists')->with('status', 'The artist has been deleted.');
     }
 }
