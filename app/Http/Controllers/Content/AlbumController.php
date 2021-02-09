@@ -16,7 +16,7 @@ class AlbumController extends Controller
 
     public function index()
     {
-        $albums = Album::with('artist')->get();
+        $albums = Album::with('artist')->latest()->paginate(15);
         return view('album.index', [
             'albums' => $albums
         ]);
@@ -49,13 +49,13 @@ class AlbumController extends Controller
         return redirect()->route('albums')->with('status', 'A new abum has been added to the collection!');
     }
 
-    public function show(Album $album, Artist $artist)
+    public function show(Album $album)
     {
         $album = Album::with('artist')->findOrFail($album->id);
-        $artist = Artist::with('albums')->find($album->artist_id);
+        $discography = Album::where('artist_id', '=', $album->artist_id)->where('id', '!=', $album->id)->get();
         return view('album.show', [
             'album' => $album,
-            'artist' => $artist
+            'discography' => $discography
         ]);
     }
 

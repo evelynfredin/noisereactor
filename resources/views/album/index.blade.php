@@ -42,7 +42,12 @@
 
 </div>
 
-@else {{'Nothing to show'}}
+<div class="mt-10">
+    {{ $albums->links() }}
+</div>
+
+@else
+<p>There are no albums to show</p>
 @endif
 
 </section>

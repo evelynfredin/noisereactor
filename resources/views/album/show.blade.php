@@ -21,7 +21,6 @@
     </div>
 </section>
 
-
 @auth
 <!-- Edit and delete buttons -->
 <div class="my-5 lg:max-w-5xl mx-auto flex">
@@ -71,16 +70,18 @@
         </div>
     </div>
 </div>
+@endauth
+
+ {{-- @dd($discography) --}}
 
 <section class="block">
-    @foreach ($artist->albums as $discography)
+    @foreach ($discography as $lp)
 
-        <p>{{ $discography->name }}</p>
+        <p>{{ $lp->name }}</p>
 
     @endforeach
 </section>
 
 
-@endauth
 
 @endsection
