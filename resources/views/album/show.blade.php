@@ -64,22 +64,27 @@
                             @method('DELETE')
                             <button class="bg-red-600 text-white px-4 py-3 mt-4 text-sm rounded ml-1" type="submit">Delete</button>
                         </form>
-                    </div>
+                    </div> <!-- Wrapper For Buttons Inside Modal End -->
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            </div> <!-- Modal Window Content End -->
+        </div> <!-- Modal Window End -->
+    </div> <!-- Delete Button End -->
+</div> <!-- Main Div End -->
 @endauth
 
- {{-- @dd($discography) --}}
 
-<section class="block">
-    @foreach ($discography as $lp)
-
-        <p>{{ $lp->name }}</p>
-
-    @endforeach
+<section class="w-full md:max-w-2xl lg:max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 mt-10">
+    <div class="lg:col-span-2 border">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    </div>
+    @if($discography->count())
+    <div class="lg:col-span-1 rounded-lg bg-white px-5 pb-5">
+        <h3>More albums by {{ $album->artist->name }}</h3>
+        @foreach ($discography as $lp)
+            <p class="py-3 border-b">{{ $lp->name }}</p>
+        @endforeach
+    </div>
+    @endif
 </section>
 
 

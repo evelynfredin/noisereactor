@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('content')
 
-@if($albums)
+@if($albums->count())
 
 <h2 class="text-blue-600 uppercase text-xl font-bold mt-5">Latest Additions</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
