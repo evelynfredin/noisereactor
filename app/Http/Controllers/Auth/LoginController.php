@@ -29,6 +29,7 @@ class LoginController extends Controller
             return back()->with('status', 'Email and/or password are incorrect');
         }
 
+        $request->session()->regenerate();
         return redirect('/');
     }
 }

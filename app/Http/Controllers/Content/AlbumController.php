@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Content;
 
 use App\Models\Album;
 use App\Models\Artist;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class AlbumController extends Controller
 {
@@ -55,7 +57,7 @@ class AlbumController extends Controller
         $discography = Album::where('artist_id', '=', $album->artist_id)->where('id', '!=', $album->id)->get();
         return view('album.show', [
             'album' => $album,
-            'discography' => $discography
+            'discography' => $discography,
         ]);
     }
 
@@ -73,6 +75,7 @@ class AlbumController extends Controller
             'edition' => 'string|required',
             'description' => 'string|required',
             'released_at' => 'nullable|date',
+            'review' => 'nullable',
             'cover' => 'image|nullable|mimes:png,jpg,jpeg|max:2048',
         ]);
 
@@ -89,7 +92,8 @@ class AlbumController extends Controller
                 'name' => $request->name,
                 'edition' => $request->edition,
                 'description' => $request->description,
-                'released_at' => $request->released_at
+                'released_at' => $request->released_at,
+                'review' => $request->review
             ]);
         }
         return redirect('/album/' . $album->id)->with('status', 'The album has been updated!');

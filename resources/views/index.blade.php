@@ -3,9 +3,9 @@
 
 @if($albums->count())
 
+
 <h2 class="text-blue-600 uppercase text-xl font-bold mt-5">Latest Additions</h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
     @foreach ($albums as $album)
 
     <div class="album">
@@ -27,12 +27,18 @@
         </div>
         <div class="text-right text-xs mt-1">Added {{ $album->created_at->diffForHumans() }}</div>
     </div>
-
     @endforeach
 
 </div>
 
 @else {{ ('Nothing to show') }}
 @endif
+
+
+<h3 class="mt-10 text-xl font-bold uppercase">Albums that have a birthday this month</h3>
+@foreach ($annivRelease as $album)
+    <p>{{ $album->name }} by: {{ $album->artist->name }} Released on: {{ $album->released_at }}</p>
+@endforeach
+
 
 @endsection

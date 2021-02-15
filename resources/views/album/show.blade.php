@@ -10,19 +10,61 @@
 </div>
 
 <section class="album-container">
+
     <div class="border rounded-lg w-80">
         <img src="{{ URL::asset( $album->cover )}}" alt="{{ $album->name }}" class="rounded-lg shadow-lg">
     </div>
+
     <div class="album-container--info">
         <h1 class="text-2xl md:text-4xl font-bold uppercase">{{ $album->artist->name }}</h1>
-        <h2 class="text-xl md:text-3xl font-bold uppercase text-blue-500">{{ $album->name }}</h2>
-        <p class="mb-3 text-sm font-light">{{ $album->edition }}</p>
-        <p class="block border-t pt-3 text-lg">{{ $album->description }}</p>
+        <h2 class="text-xl md:text-3xl font-bold uppercase text-blue-500 pb-3">{{ $album->name }}</h2>
+        <p class="block border-t pt-3">{{ $album->description }}</p>
     </div>
-</section>
+
+</section> <!-- End Album Overview Container -->
+
+<div class="lg:max-w-5xl md:max-w-2xl mx-auto flex flex-col lg:flex-row mt-16 items-start">
+
+    <div class="w-full lg:w-2/3 lg:mr-4 rounded-lg">
+        @if($album->review)
+            <div class="review">
+                @markdown($album->review)
+            </div>
+        @endif
+    </div> <!-- End Review Section -->
+
+    <div class="mt-5 lg:mt-0 w-full lg:w-1/3">
+        <div class="p-3 pb-8 border rounded-lg mb-5 text-center">
+            <h3 class="album-h3">Album Info</h3>
+            <p class="font-bold album-meta">Version:</p>
+            <p class="album-meta">{{ $album->edition }}</p>
+            <p class="font-bold album-meta">Release date:</p>
+            <p class="album-meta">{{ $album->released_at }}</p>
+            <p class="font-bold album-meta">Label:</p>
+            <p class="album-meta">Reactor Records</p>
+        </div>
+        @if($discography->count())
+        <div class="p-3 pb-8 border rounded-lg">
+            <h3 class="album-h3">More by {{ $album->artist->name }}</h3>
+            <ul class="album-ulist px-3">
+                @foreach ($discography as $lp)
+                <div class="border-b">
+                    <a href="{{ $lp->id }}">
+                    <li class="album-list">
+                        <img class="w-6 h-6 rounded-full mr-2" src="{{ URL::asset($lp->cover) }}" alt="{{ $lp->name }}">{{ $lp->name }}
+                    </li>
+                    </a>
+                </div>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+
+</div> <!-- End Album Additional Info -->
 
 @auth
-<!-- Edit and delete buttons -->
+<!-- Edit / Delete Start -->
 <div class="my-5 lg:max-w-5xl mx-auto flex">
     <form action="{{ route('edit.album', $album->id) }}" method="get">
         @csrf
@@ -69,24 +111,7 @@
             </div> <!-- Modal Window Content End -->
         </div> <!-- Modal Window End -->
     </div> <!-- Delete Button End -->
-</div> <!-- Main Div End -->
+</div> <!-- Edit/Delete End -->
 @endauth
-
-
-<section class="w-full md:max-w-2xl lg:max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 mt-10">
-    <div class="lg:col-span-2 border">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-    </div>
-    @if($discography->count())
-    <div class="lg:col-span-1 rounded-lg bg-white px-5 pb-5">
-        <h3>More albums by {{ $album->artist->name }}</h3>
-        @foreach ($discography as $lp)
-            <p class="py-3 border-b">{{ $lp->name }}</p>
-        @endforeach
-    </div>
-    @endif
-</section>
-
-
 
 @endsection

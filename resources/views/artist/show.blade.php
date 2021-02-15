@@ -12,18 +12,23 @@
         <a class="hover:text-blue-700" href="{{ $artist->website }}">{{ @parse_url($artist->website)['host'] }}</a></span>
     </h2>
     <div class="flex flex-col md:flex-row">
-        <div class="w-full md:w-2/3 h-auto">
+        <div class="w-full md:w-3/5 h-auto">
             <img src="{{ URL::asset($artist->pic) }}" alt="{{ $artist->name }}" class="w-full h-full object-cover">
         </div>
-        <div class="w-full mt-5 md:mt-0 md:w-1/3 md:ml-10">
-            <div >{{ $artist->bio }}</div>
-            <div>
-                <h3 class="text-xl font-bold mt-3">Genres</h3>
+
+        <div class="w-full mt-5 md:mt-0 md:w-2/5 md:ml-5">
+            <div class="bg-white rounded-lg p-5 text-lg">
+                {{ $artist->bio }}
+            </div>
+
+            <div class="border rounded-lg mt-5 p-5">
+                <h3 class="text-xl font-bold">Genres</h3>
                 @foreach ($artist->genres as $genre)
                     <p class="bg-blue-300 inline-block px-3 py-2 rounded-3xl mt-3 mr-2">{{ $genre->genre }}</p>
                 @endforeach
             </div>
         </div>
+
     </div>
 </section>
 
