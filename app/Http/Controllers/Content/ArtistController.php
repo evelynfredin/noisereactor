@@ -67,7 +67,7 @@ class ArtistController extends Controller
             'name' => 'string|required',
             'website' => 'url|nullable',
             'bio' => 'string|nullable',
-            'slug' => 'string|required',
+            'slug' => 'string|nullable',
             'pic' => 'image|nullable|mimes:png,jpg,jpeg|max:2048',
         ]);
 
