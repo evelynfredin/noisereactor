@@ -11,12 +11,12 @@
     <h2 class="text-3xl font-bold mb-5">{{ $artist->name }} <span class="font-normal text-xl ml-3">
         <a class="hover:text-blue-700" href="{{ $artist->website }}">{{ @parse_url($artist->website)['host'] }}</a></span>
     </h2>
-    <div class="flex flex-col md:flex-row">
-        <div class="w-full md:w-3/5 h-auto">
+    <div class="flex flex-col lg:flex-row">
+        <div class="w-full lg:w-3/5 h-auto">
             <img src="{{ URL::asset($artist->pic) }}" alt="{{ $artist->name }}" class="w-full h-full object-cover">
         </div>
 
-        <div class="w-full mt-5 md:mt-0 md:w-2/5 md:ml-5">
+        <div class="w-full mt-5 lg:mt-0 lg:w-2/5 lg:ml-5">
             <div class="bg-white rounded-lg p-5 text-lg">
                 {{ $artist->bio }}
             </div>
@@ -24,10 +24,26 @@
             <div class="border rounded-lg mt-5 p-5">
                 <h3 class="text-xl font-bold">Genres</h3>
                 @foreach ($artist->genres as $genre)
-                    <p class="bg-blue-300 inline-block px-3 py-2 rounded-3xl mt-3 mr-2">{{ $genre->genre }}</p>
+                    <p class="bg-blue-300 inline-block px-3 py-2 rounded-3xl mt-3 mr-2 text-gray-600">{{ $genre->genre }}</p>
                 @endforeach
             </div>
         </div>
+
+    </div>
+</section>
+
+
+<section class="my-10">
+    <h3 class="uppercase text-blue-700 text-center font-bold text-2xl">Albums by {{ $artist->name }}</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-5">
+
+        @foreach ($artist->albums as $album)
+        <div class="border rounded-lg bg-white hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 ease-in duration-300">
+            <a href="{{ route('show.album', $album->id) }}">
+                <img src="{{ URL::asset($album->cover)}}" alt="{{ $album->name }}" class="object-cover object-center rounded-lg shadow-sm">
+            </a>
+        </div>
+        @endforeach
 
     </div>
 </section>

@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-gray-50 text-gray-700">
-    <div class="sticky bg-gray-50 top-0 z-40">
+    <div class="sticky bg-gray-50 top-0 z-40 border-b-4 border-blue-600">
         <header class=" content md:flex md:justify-between h-auto items-center" x-data="{ isOpen: false }">
             <div class="flex justify-between h-auto items-center">
                 <div class="logo">
