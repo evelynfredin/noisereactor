@@ -18,8 +18,11 @@ class CreateAlbumsTable extends Migration
             $table->string('name');
             $table->foreignId('artist_id')->constrained()->onDelete('cascade');
             $table->string('edition');
-            $table->date('released_at')->nullable();
             $table->string('label')->nullable();
+            $table->text('review')->nullable();
+            $table->text('description');
+            $table->date('released_at')->nullable();
+            $table->string('cover')->default('uploads/albums/default.jpg');
             $table->timestamps();
         });
     }
