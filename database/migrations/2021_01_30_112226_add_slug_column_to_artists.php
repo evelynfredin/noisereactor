@@ -14,7 +14,7 @@ class AddSlugColumnToArtists extends Migration
     public function up()
     {
         Schema::table('artists', function (Blueprint $table) {
-            $table->string('slug')->unique()->after('name');
+            $table->string('slug')->after('name');
         });
     }
 
