@@ -4,17 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Genre extends Model
+class ArtistGenre extends Pivot
 {
     use HasFactory;
 
     protected $fillable = [
-        'genre'
+        'artist_id',
+        'genre_id'
     ];
-
-    public function artists()
-    {
-        return $this->belongsToMany(Artist::class)->using(ArtistGenre::class);
-    }
 }

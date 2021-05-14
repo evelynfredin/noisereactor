@@ -19,7 +19,7 @@ class Artist extends Model
 
     public function genres()
     {
-        return $this->belongsToMany(Genre::class);
+        return $this->belongsToMany(Genre::class, 'artist_genre')->using(ArtistGenre::class);
     }
 
     public function albums()

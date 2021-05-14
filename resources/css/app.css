@@ -47,7 +47,7 @@
 }
 
 .album {
-  @apply flex flex-col md:mt-8 p-4 rounded-lg transform lg:hover:scale-110 lg:hover:shadow-2xl transition-all duration-700 ease-in-out;
+  @apply flex flex-col md:mt-8 p-4 rounded-lg transform lg:hover:scale-105 lg:hover:shadow-lg transition-all duration-700 ease-in-out;
 }
 
 .album-info {

@@ -41,53 +41,54 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('artists') }}">Artists</a></li>
 
                     @guest
-                    <li class="md:ml-1 mt-10 md:mt-0 md:w-auto"><a class="btn bg-gray-700 hover:bg-blue-500" href="{{ route('login') }}">Log in</a></li>
+                        <li class="md:ml-1 mt-10 md:mt-0 md:w-auto"><a class="btn bg-gray-700 hover:bg-blue-500" href="{{ route('login') }}">Log in</a></li>
                     @endguest
 
                     @auth
-                    <li class="md:ml-1 mt-10 md:mt-0 md:w-auto">
-                        <div class="flex justify-center">
-                            <!-- Dropdown -->
-                            <div x-data="{ open: false }" class="relative">
-                                <button x-on:click="open = true" class="block h-10 w-10 rounded-full overflow-hidden focus:outline-none">
-                                    <img class="h-full w-full object-cover" src="{{ asset('img/ev.jpg') }}" alt="avatar">
-                                </button>
-                                <!-- Dropdown Body -->
-                                <div x-show.transition="open" x-on:click.away="open = false" class="modal">
-                                    <a href="{{ route('new.album') }}" class="modal--item">Add new album</a>
-                                    <div>
-                                        <hr>
+                        <li class="md:ml-1 mt-10 md:mt-0 md:w-auto">
+                            <div class="flex justify-center">
+                                <!-- Dropdown -->
+                                <div x-data="{ open: false }" class="relative">
+                                    <button x-on:click="open = true" class="block h-10 w-10 rounded-full overflow-hidden focus:outline-none">
+                                        <img class="h-full w-full object-cover" src="{{ asset('img/ev.jpg') }}" alt="avatar">
+                                    </button>
+                                    <!-- Dropdown Body -->
+                                    <div x-show.transition="open" x-on:click.away="open = false" class="modal">
+                                        <a href="{{ route('new.album') }}" class="modal--item">Add new album</a>
+                                        <div>
+                                            <hr>
+                                        </div>
+                                        <a href="{{ route('new.artist') }}" class="modal--item">Add new artist</a>
+                                        <div>
+                                            <hr>
+                                        </div>
+                                        <form action="{{ route('logout') }}" method="post">
+                                            @csrf
+                                            <button class="modal--item w-full text-left" type="submit">Log out</button>
+                                        </form>
                                     </div>
-                                    <a href="{{ route('new.artist') }}" class="modal--item">Add new artist</a>
-                                    <div>
-                                        <hr>
-                                    </div>
-                                    <form action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                        <button class="modal--item w-full text-left" type="submit">Log out</button>
-                                    </form>
+                                    <!-- // Dropdown Body -->
                                 </div>
-                                <!-- // Dropdown Body -->
+                                <!-- // Dropdown -->
                             </div>
-                            <!-- // Dropdown -->
-                        </div>
-                    </li>
+                        </li>
                     @endauth
 
                 </ul>
             </nav>
         </header>
     </div>
-    <div class="bg-gradient-to-r from-blue-800 to-blue-500">
-        <div class="noteworthy content">
-            <h2 class="text-2xl uppercase font-bold tracking-wider text-white">Oh, yes! 2020 is finally over!</h2>
-            <a href="#" class="noteworthy--btn">And here is my Top-10</a>
-        </div>
-    </div>
 
-    <main class="content">
+    <main class="content min-h-screen">
         @yield('content')
     </main>
+
+    <footer class="bg-gray-700 py-10 mt-10 text-white text-center">
+        <p>Noise Reactor</p>
+        @auth
+            <p class="text-sm uppercase">Welcome, {{ auth()->user()->username }}!</p>
+        @endauth
+    </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

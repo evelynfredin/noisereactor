@@ -16,6 +16,12 @@ class AlbumController extends Controller
         $this->middleware('auth')->only('submit');
     }
 
+    // API Endpoint only
+    public function getAllAlbums()
+    {
+        return Album::all();
+    }
+
     public function index()
     {
         $albums = Album::with('artist')->latest()->paginate(15);
@@ -41,12 +47,7 @@ class AlbumController extends Controller
             'artist_id' => 'required'
         ]);
 
-        Album::create([
-            'name' => $request->name,
-            'edition' => $request->edition,
-            'description' => $request->description,
-            'artist_id' => $request->artist_id
-        ]);
+        Album::create($request->all());
 
         return redirect()->route('albums')->with('status', 'A new abum has been added to the collection!');
     }
