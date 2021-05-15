@@ -1,7 +1,5 @@
 php:
-  preset: laravel
-  disabled:
-    - no_unused_imports
+  preset: psr-12
   finder:
     not-name:
       - index.php
