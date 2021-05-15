@@ -36,17 +36,27 @@
     @else {{ 'Nothing to show' }}
     @endif
 
-
-    <h3 class="mt-10 text-xl font-bold uppercase">Albums that have a birthday this month</h3>
-    <div class="overflow-x-scroll overflow-y-hidden whitespace-nowrap">
-        @foreach ($annivRelease as $album)
-            <div class="inline-flex flex-col items-center">
-                <img class="w-40 rounded-md" src="{{ URL::asset($album->cover) }}" alt="Album cover for {{ $album->name }}" class="h-full w-full object-cover">
-                <p class="text-sm">{{ $album->released_at }}</p>
-
+    <div class="container mx-auto flex flex-col lg:flex-row mt-16 items-start">
+        <div class="w-full lg:w-2/3 lg:mr-4 rounded-lg">
+            <h2>Blog</h2>
+        </div>
+        @if ($annivRelease->count())
+            <div class="p-3 pb-8 border rounded-lg">
+                <h3 class="album-h3">Release Anniversary</h3>
+                <ul class="album-ulist px-3">
+                    @foreach ($annivRelease as $album)
+                        <div class="border-b">
+                            <a href="/album/{{ $album->id }}">
+                                <li class="album-list">
+                                    <img class="w-6 h-6 rounded-full mr-2"
+                                         src="{{ URL::asset($album->cover) }}"
+                                         alt="{{ $album->name }} cover art">{{ $album->name }}
+                                </li>
+                            </a>
+                        </div>
+                    @endforeach
+                </ul>
             </div>
-        @endforeach
+        @endif
     </div>
-
-
 @endsection

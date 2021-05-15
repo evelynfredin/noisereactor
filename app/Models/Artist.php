@@ -17,6 +17,13 @@ class Artist extends Model
         'pic'
     ];
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, fn ($query, $search) =>
+        $query
+            ->where('name', 'like', '%' . $search . '%'));
+    }
+
     public function genres()
     {
         return $this->belongsToMany(Genre::class, 'artist_genre')->using(ArtistGenre::class);

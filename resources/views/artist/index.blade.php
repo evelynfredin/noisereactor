@@ -7,6 +7,16 @@
         </div>
     @endif
 
+    <section>
+        <form method="GET" action="#" class="bg-gray-100 rounded-xl md:w-1/2 lg:w-1/3">
+            <input type="text"
+                   name="search"
+                   placeholder="Search for artists"
+                   class="bg-transparent w-full px-3 py-3 placeholder-gray-500 font-semibold text-sm"
+                   value="{{ request('search') }}">
+        </form>
+    </section>
+
     <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-5">
         @foreach ($artists as $artist)
             <div class="bg-white rounded overflow-hidden shadow-sm border relative hover:shadow-lg">

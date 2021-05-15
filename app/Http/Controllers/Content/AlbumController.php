@@ -24,9 +24,8 @@ class AlbumController extends Controller
 
     public function index()
     {
-        $albums = Album::with('artist')->latest()->paginate(15);
         return view('album.index', [
-            'albums' => $albums
+            'albums' => Album::latest()->filter(request(['search']))->with('artist')->paginate(15)
         ]);
     }
 
