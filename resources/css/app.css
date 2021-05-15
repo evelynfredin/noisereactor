@@ -3,104 +3,104 @@
 @tailwind utilities;
 
 .menu {
-  @apply flex flex-col md:flex-row text-xl md:text-lg font-bold font-sans text-center md:text-left h-auto items-center;
+    @apply flex flex-col md:flex-row text-xl md:text-lg font-bold font-sans text-center md:text-left h-auto items-center;
 }
 
 .nav-link {
-  @apply px-28 md:py-2 md:px-4 md:hover:text-white md:hover:bg-blue-500 transition duration-500 ease-in-out;
+    @apply px-28 md:py-2 md:px-4 md:hover:text-white md:hover:bg-blue-500 transition duration-500 ease-in-out;
 }
 
 .nav-item {
-  @apply w-full border-b border-white md:border-none md:w-auto py-5 md:py-0 bg-blue-100 md:bg-transparent;
+    @apply w-full border-b border-white md:border-none md:w-auto py-5 md:py-0 bg-blue-100 md:bg-transparent;
 }
 
 .btn {
-  @apply text-white rounded-lg py-2 px-28 md:px-5 shadow-lg transition duration-500 ease-in-out;
+    @apply text-white rounded-lg py-2 px-28 md:px-5 shadow-lg transition duration-500 ease-in-out;
 }
 
 .noteworthy {
-  @apply container  h-auto md:items-center flex flex-col md:flex-row;
+    @apply container  h-auto md:items-center flex flex-col md:flex-row;
 }
 
 .noteworthy--btn {
-  @apply bg-gray-100 rounded-lg px-4 py-2 md:ml-5 mt-2 md:mt-0 text-center w-auto shadow-lg md:w-auto font-semibold uppercase hover:bg-gray-700 hover:text-gray-50 transition duration-500 ease-in-out;
+    @apply bg-gray-100 rounded-lg px-4 py-2 md:ml-5 mt-2 md:mt-0 text-center w-auto shadow-lg md:w-auto font-semibold uppercase hover:bg-gray-700 hover:text-gray-50 transition duration-500 ease-in-out;
 }
 
 .content {
-  @apply mx-auto max-w-7xl p-5;
+    @apply mx-auto max-w-7xl p-5;
 }
 
 .input {
-  @apply w-full p-2 bg-gray-50 border rounded-xl mb-5 border-blue-500;
+    @apply w-full p-2 bg-gray-50 border rounded-xl mb-5 border-blue-500;
 }
 
 .modal {
-  @apply absolute right-0 w-40 text-sm font-light bg-white border rounded shadow-xl;
+    @apply absolute right-0 w-40 text-sm font-light bg-white border rounded shadow-xl;
 }
 
 .modal--item {
-  @apply transition-colors duration-200 block px-4 py-2 text-gray-900 hover:bg-blue-500 hover:text-white;
+    @apply transition-colors duration-200 block px-4 py-2 text-gray-900 hover:bg-blue-500 hover:text-white;
 }
 
 .heading--3 {
-  @apply uppercase font-bold text-blue-500 text-center text-xl mb-5;
+    @apply uppercase font-bold text-blue-500 text-center text-xl mb-5;
 }
 
 .album {
-  @apply flex flex-col md:mt-8 p-4 rounded-lg transform lg:hover:scale-105 lg:hover:shadow-lg transition-all duration-700 ease-in-out;
+    @apply flex flex-col md:mt-8 p-4 rounded-lg transform lg:hover:scale-105 lg:hover:shadow-lg transition-all duration-700 ease-in-out;
 }
 
 .album-info {
-  @apply absolute flex flex-col justify-center h-auto items-baseline top-0 w-auto;
+    @apply absolute flex flex-col justify-center h-auto items-baseline top-0 w-auto;
 }
 
 .album-tr {
-  -webkit-transform: translate(-100%, -100%) rotate(-90deg);
-  -ms-transform: translate(-100%, -100%) rotate(-90deg);
-  transform: translate(-100%, -100%) rotate(-90deg);
-  -webkit-transform-origin: right bottom;
-  -ms-transform-origin: right bottom;
-  transform-origin: right bottom;
-  left: 15%;
+    -webkit-transform: translate(-100%, -100%) rotate(-90deg);
+    -ms-transform: translate(-100%, -100%) rotate(-90deg);
+    transform: translate(-100%, -100%) rotate(-90deg);
+    -webkit-transform-origin: right bottom;
+    -ms-transform-origin: right bottom;
+    transform-origin: right bottom;
+    left: 15%;
 }
 
 .cover {
-  width: 333.33%;
-  padding-left: 16%;
+    width: 333.33%;
+    padding-left: 16%;
 }
 
 .album-container {
-  @apply mt-5 lg:max-w-5xl flex flex-col items-center lg:items-end lg:flex-row mx-auto;
+    @apply mt-5 lg:max-w-5xl flex flex-col items-center lg:items-end lg:flex-row mx-auto;
 }
 
 .album-container--info {
-  @apply flex flex-col justify-end mx-auto w-full md:max-w-2xl lg:w-2/3 mt-10 lg:mt-0 lg:ml-7 bg-white px-10 lg:px-5 pt-10 pb-5 rounded-lg;
+    @apply flex flex-col justify-end mx-auto w-full md:max-w-2xl lg:w-2/3 mt-10 lg:mt-0 lg:ml-7 bg-white px-10 lg:px-5 pt-10 pb-5 rounded-lg;
 }
 
 li.album-list {
-  @apply transition duration-500 ease-in-out flex h-auto items-center py-3 hover:text-blue-500 transform hover:translate-x-4;
+    @apply transition duration-500 ease-in-out flex h-auto items-center py-3 hover:text-blue-500 transform hover:translate-x-4;
 }
 
 .album-ulist > div:last-child {
-  border-bottom: 0;
+    border-bottom: 0;
 }
 
 .review {
-  @apply px-8 pb-5 bg-white rounded-lg;
+    @apply px-8 pb-5 bg-white rounded-lg;
 }
 
 .review h2 {
-  @apply text-2xl uppercase font-bold pt-5;
+    @apply text-2xl uppercase font-bold pt-5;
 }
 
 .review p {
-  @apply my-2 text-lg;
+    @apply my-2 text-lg;
 }
 
 .album-h3 {
-  @apply uppercase font-bold text-lg pt-5 text-center;
+    @apply uppercase font-bold text-lg pt-5 text-center;
 }
 
 .album-meta {
-  @apply uppercase text-sm;
+    @apply uppercase text-sm;
 }
