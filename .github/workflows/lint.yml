@@ -13,4 +13,4 @@ jobs:
       - run: php artisan key:generate
       - run: chmod -R 777 storage bootstrap/cache
       - run: php artisan test
-      - run: vendor/bin/phpcs --standard=PSR12 --ignore='database/migrations/' --colors -n app config routes database tests
+      - run: vendor/bin/phpcs --standard=PSR12 --colors -n app config routes database tests
