@@ -2,22 +2,14 @@
 @section('content')
 
     @if (Session::has('status'))
-        <div class="bg-green-500 text-gray-50">
+        <div class="bg-green-500 text-gray-50 mb-5">
             <p class="py-2 px-3">{{ Session::get('status') }}</p>
         </div>
     @endif
 
-    <section>
-        <form method="GET" action="#" class="bg-gray-100 rounded-xl md:w-1/2 lg:w-1/3">
-            <input type="text"
-                   name="search"
-                   placeholder="Search for artists"
-                   class="bg-transparent w-full px-3 py-3 placeholder-gray-500 font-semibold text-sm"
-                   value="{{ request('search') }}">
-        </form>
-    </section>
+    <x-search />
 
-    <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-5">
+    <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10">
         @foreach ($artists as $artist)
             <div class="bg-white rounded overflow-hidden shadow-sm border relative hover:shadow-lg">
                 <a href="{{ route('show.artist', $artist->slug) }}">
