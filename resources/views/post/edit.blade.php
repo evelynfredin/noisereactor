@@ -20,9 +20,7 @@
                 <textarea class="input" name="body" id="body" cols="30" rows="10">{{ $post->body }}</textarea>
             </div>
 
-            <div class="w-full mt-5 md:mt-0 md:w-1/3 md:ml-10">
                 <button class="btn bg-blue-500 hover:bg-gray-700" type="submit">Update post</button>
-            </div>
             </div>
 
         </form>
