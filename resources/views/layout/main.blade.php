@@ -62,6 +62,10 @@
                                         <div>
                                             <hr>
                                         </div>
+                                        <a href="{{ route('new.post') }}" class="modal--item">Add new post</a>
+                                        <div>
+                                            <hr>
+                                        </div>
                                         <form action="{{ route('logout') }}" method="post">
                                             @csrf
                                             <button class="modal--item w-full text-left" type="submit">Log out</button>

@@ -20,6 +20,7 @@ class AllRoutesTest extends TestCase
             '/login',
             '/albums',
             '/artists',
+            '/blog'
         ];
 
         foreach ($routes as $route) {
