@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Artist extends Model
+class Label extends Model
 {
     use HasFactory;
 
@@ -14,12 +14,9 @@ class Artist extends Model
      * The attributes that are mass assignable.
      * @var array<int, string>
      */
+
     protected $fillable = [
-        'name',
-        'bio',
-        'website',
-        'slug',
-        'pic'
+        'name'
     ];
 
     public function albums(): HasMany
