@@ -12,7 +12,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+        body: ['"Source Sans Pro", sans-serif'],
+        headings: ['"Nunito", sans-serif'],
       },
     },
   },
