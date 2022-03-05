@@ -18,7 +18,7 @@ const Burger = ({ setOpen, open, white }: Props) => {
       aria-label="Toggle menu"
       onClick={handleBurger}
       className={clsx(
-        'burger relative flex h-[60px] w-[60px] cursor-pointer flex-col items-center justify-center rounded-full md:hidden',
+        'burger relative flex h-[50px] w-[50px] cursor-pointer flex-col items-center justify-center rounded-full md:hidden',
         'hover:bg-gray-100',
         open
           ? 'bg-gray-100 outline-none ring-2 ring-blue-500 ring-offset-2'

@@ -29,36 +29,43 @@ const MainNavItem = ({
     (exactUrlMatch && currentUrl === match) || (!exactUrlMatch && hasUrlMatch);
 
   return (
-    <li
+    <Link
+      href={url}
       className={clsx(
-        'group h-full py-2 px-3 font-headings transition delay-150 duration-300 ease-in-out last-of-type:mb-5 md:py-0 md:last-of-type:mb-0',
-        'hover:bg-blue-500 hover:text-white',
-        linkActive && 'bg-blue-500 text-white'
+        'text-lg w-full h-full',
+        'focus:bg-blue-500 focus:text-white'
       )}
     >
-      <Link
-        href={url}
+      <li
         className={clsx(
-          'group flex h-full items-center text-lg',
-          'focus:bg-blue-500 focus:text-white'
+          'group py-2 px-3 font-headings transition delay-150 duration-300 ease-in-out md:py-0 group flex h-full items-center ',
+          'hover:bg-blue-500 hover:text-white',
+          linkActive && 'bg-blue-500 text-white'
         )}
       >
         {label}
-      </Link>
-    </li>
+      </li>
+    </Link>
   );
 };
 
 const Navigation = ({ onMenuClick }: Props) => {
   return (
     <div className="mt-5 h-full font-bold md:mt-0">
-      <ul className="flex h-12 flex-col md:flex-row md:space-x-3">
+      <ul className="flex items-start md:items-center h-12 flex-col md:flex-row md:space-x-3">
         {navItems.map((item) => (
-          <MainNavItem key={item.id} url={item.path} label={item.label} />
+          <MainNavItem
+            key={item.id}
+            url={item.path}
+            label={item.label}
+            exactUrlMatch={item.label === 'Home'}
+          />
         ))}
-        <LinkButton small onChange={onMenuClick} href="/login">
-          Login
-        </LinkButton>
+        <div className="mt-5 md:mt-0 w-full">
+          <LinkButton small onChange={onMenuClick} href="/login">
+            Login
+          </LinkButton>
+        </div>
       </ul>
     </div>
   );
