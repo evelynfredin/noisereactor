@@ -17,7 +17,7 @@ class ArtistFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->words(rand(1, 5), true),
+            'name' => $this->faker->words(rand(1, 4), true),
             'bio' => $this->faker->sentence(4),
             'website' => $this->faker->url(),
             'slug' => $this->faker->unique()->word
