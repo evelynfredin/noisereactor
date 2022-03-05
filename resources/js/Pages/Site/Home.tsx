@@ -1,9 +1,11 @@
+import Header from '@/Components/Site/Header';
 import React from 'react';
 
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Header />
+      <p>yess</p>
     </div>
   );
 };
