@@ -18,6 +18,7 @@ class Artist extends Model
         'name',
         'bio',
         'website',
+        'slug',
         'pic'
     ];
 
