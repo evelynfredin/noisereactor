@@ -21,4 +21,16 @@ class ArtistController extends Controller
                 ->get()
         ]);
     }
+
+    /**
+     * Handle the incoming request
+     * @param \App\Models\Artist  $artist
+     * @return \Inertia\Response
+     */
+    public function show(Artist $artist): Response
+    {
+        return Inertia::render('Site/ShowArtist', [
+            'artist' => Artist::with(['albums'])->findOrFail($artist->id)
+        ]);
+    }
 }
