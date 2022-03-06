@@ -31,7 +31,15 @@ declare namespace App {
     description: string;
     released_date: string;
     cover: string;
+    review: Review;
     created_at: string;
     updated_at: string;
+  }
+
+  interface Review {
+    album: Album;
+    excerpt: string;
+    content: string;
+    is_published: boolean;
   }
 }
