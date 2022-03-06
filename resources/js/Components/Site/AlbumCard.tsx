@@ -18,12 +18,12 @@ const AlbumCard = ({
   release,
 }: Props) => {
   return (
-    <div>
+    <div className="flex flex-col p-4 rounded-lg transform lg:hover:scale-105 lg:hover:shadow-lg smoothify">
       <Link href={`/album/${albumPath}`}>
-        <div>
-          <div>
+        <div className="flex relative">
+          <div className="album-tr absolute top-0 flex h-auto w-auto flex-col items-baseline justify-center">
             <p>{artistName}</p>
-            <p>
+            <p className="-mt-2 text-right font-semibold uppercase">
               {albumTitle}
               <span>
                 <Chevron />
@@ -33,6 +33,7 @@ const AlbumCard = ({
           <div>
             {cover ? (
               <img
+                className="pl-[16%]"
                 src={`/storage/${cover}`}
                 alt={`Album cover for ${albumTitle}`}
                 width="477px"
@@ -40,6 +41,7 @@ const AlbumCard = ({
               />
             ) : (
               <img
+                className="pl-[16%]"
                 src="/images/album-default.jpg"
                 alt="No cover found for this album"
                 width="477px"
@@ -48,7 +50,7 @@ const AlbumCard = ({
             )}
           </div>
         </div>
-        <div>{release}</div>
+        <div className="mt-2 text-right text-xs">{release}</div>
       </Link>
     </div>
   );

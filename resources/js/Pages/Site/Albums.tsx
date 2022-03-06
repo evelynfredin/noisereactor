@@ -15,7 +15,7 @@ const Albums = ({ albums }: Props) => {
         <h2 className="font-heading text-4xl">Albums</h2>
       </div>
 
-      <section className="my-10">
+      <section className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {albums.map((album) => (
           <AlbumCard
             key={album.id}

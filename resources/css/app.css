@@ -56,3 +56,19 @@
     @apply font-headings font-bold;
   }
 }
+
+@layer utilities {
+  .smoothify {
+    @apply transition duration-500 ease-in-out;
+  }
+}
+
+.album-tr {
+  -webkit-transform: translate(-100%, -100%) rotate(-90deg);
+  -ms-transform: translate(-100%, -100%) rotate(-90deg);
+  transform: translate(-100%, -100%) rotate(-90deg);
+  -webkit-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  transform-origin: right bottom;
+  left: 15%;
+}
