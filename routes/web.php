@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Site\ArtistController;
+use App\Models\Artist;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,8 +21,10 @@ Route::get('/', function () {
 });
 
 Route::controller(ArtistController::class)->group(
-    fn () =>
-    Route::get('/artists', 'index')->name('artists')
+    function () {
+        Route::get('/artists', 'index')->name('artists');
+        Route::get('artist/{artist:slug}', 'show')->name('show.artist');
+    }
 );
 
 require __DIR__ . '/auth.php';

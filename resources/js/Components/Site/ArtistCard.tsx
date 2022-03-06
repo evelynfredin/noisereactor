@@ -9,15 +9,15 @@ type Props = {
 
 const ArtistName = ({ artistName }) => {
   return (
-    <div>
-      <span>{artistName}</span>
+    <div className="bg-white text-secondary-200 rounded-full py-1 px-2 absolute bottom-0 right-0 m-2 mt-2 focus:outline-1">
+      <span className="text-sm md:text-base capitalize">{artistName}</span>
     </div>
   );
 };
 
 const MusicCount = ({ count }) => {
   return (
-    <div>
+    <div className="bg-white text-secondary-200 text-xs font-bold rounded-full py-1 px-2 absolute top-0 m-2 mt-2">
       <svg
         className="w-4 inline-block"
         fill="none"
@@ -44,7 +44,7 @@ const ArtistCard = ({
   children,
 }: PropsWithChildren<Props>) => {
   return (
-    <div>
+    <div className="bg-white rounded overflow-hidden shadow-sm border relative hover:shadow-lg">
       <Link href={`/artist/${slug}`}>
         {children}
         <ArtistName artistName={name} />
