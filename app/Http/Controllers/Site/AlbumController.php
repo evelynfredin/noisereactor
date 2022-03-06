@@ -21,4 +21,16 @@ class AlbumController extends Controller
                 ->get()
         ]);
     }
+
+    /**
+     * Handle the incoming request
+     * @param \App\Models\Album  @album
+     * @return \Inertia\Response
+     */
+    public function show(Album $album): Response
+    {
+        return Inertia::render('Site/ShowAlbum', [
+            'album' => Album::with(['artist', 'label'])->findOrFail($album->id)
+        ]);
+    }
 }

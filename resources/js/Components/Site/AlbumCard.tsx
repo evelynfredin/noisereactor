@@ -26,7 +26,7 @@ const AlbumCard = ({
             <p className="-mt-2 text-right font-semibold uppercase">
               {albumTitle}
               <span>
-                <Chevron />
+                <Chevron size="small" />
               </span>
             </p>
           </div>

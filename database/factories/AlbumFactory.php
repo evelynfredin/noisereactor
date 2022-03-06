@@ -21,7 +21,7 @@ class AlbumFactory extends Factory
             'title' => $this->faker->words(rand(1, 3), true),
             'edition' => 'Standard',
             'label_id' => $this->faker->numberBetween(rand(1, 6), true),
-            'description' => $this->faker->sentence(4),
+            'description' => $this->faker->paragraph(mt_rand(4, 6)),
             'released_date' => $this->faker->date($format = 'Y-m-d', $max = 'now')
         ];
     }

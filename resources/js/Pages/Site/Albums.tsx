@@ -7,8 +7,6 @@ type Props = {
 };
 
 const Albums = ({ albums }: Props) => {
-  console.log(albums);
-
   return (
     <Main title="Albums">
       <div>
