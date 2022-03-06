@@ -16,7 +16,7 @@ const ArtistInfo = ({
 }: PropsWithChildren<Props>) => {
   return (
     <>
-      <h2 className="capitalize text-3xl font-bold mb-5 flex flex-col md:flex-row items-center">
+      <h2 className="capitalize text-3xl mb-5 flex flex-col md:flex-row items-center">
         {name}
         <span className="font-normal text-xl md:ml-3">
           <a
@@ -49,6 +49,7 @@ const ArtistInfo = ({
         </div>
         <div className="w-full mt-5 lg:mt-0 lg:w-2/5 lg:ml-5">
           <div className="bg-white rounded-lg p-5 text-lg shadow-sm">{bio}</div>
+          {children}
         </div>
       </div>
     </>

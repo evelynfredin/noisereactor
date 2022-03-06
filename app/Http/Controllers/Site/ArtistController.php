@@ -30,7 +30,7 @@ class ArtistController extends Controller
     public function show(Artist $artist): Response
     {
         return Inertia::render('Site/ShowArtist', [
-            'artist' => Artist::with(['albums'])->findOrFail($artist->id)
+            'artist' => Artist::with(['albums', 'genres'])->findOrFail($artist->id)
         ]);
     }
 }

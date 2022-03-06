@@ -4,7 +4,7 @@ import React, { PropsWithChildren } from 'react';
 type Props = {
   slug: string;
   name: string;
-  albums_count: number | undefined;
+  albums_count: number;
 };
 
 const ArtistName = ({ artistName }) => {
