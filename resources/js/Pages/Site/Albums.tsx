@@ -1,5 +1,6 @@
 import AlbumCard from '@/Components/Site/AlbumCard';
 import Main from '@/Layouts/Main';
+import { diffForHumans } from '@/utils/helpers';
 import React from 'react';
 
 type Props = {
@@ -21,7 +22,7 @@ const Albums = ({ albums }: Props) => {
             artistName={album.artist.name}
             albumTitle={album.title}
             cover={album.cover}
-            release="release date here"
+            added={diffForHumans(album.created_at)}
           />
         ))}
       </section>

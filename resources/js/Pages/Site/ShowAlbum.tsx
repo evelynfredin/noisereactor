@@ -19,7 +19,7 @@ const ShowAlbum = ({ album }: Props) => {
           description={album.description}
           pathToArtist={album.artist.slug}
           edition={album.edition}
-          released="2020-04-24"
+          released={album.released_date}
           label={album.label.name}
         />
       </section>
