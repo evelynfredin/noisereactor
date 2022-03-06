@@ -31,6 +31,7 @@ Route::controller(ArtistController::class)->group(
 Route::controller(AlbumController::class)->group(
     function () {
         Route::get('/albums', 'index')->name('albums');
+        Route::get('/album/{album}', 'show')->name('show.album');
     }
 );
 

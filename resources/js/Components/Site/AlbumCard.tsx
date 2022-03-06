@@ -7,7 +7,7 @@ type Props = {
   artistName: string;
   albumTitle: string;
   cover?: string;
-  release: string;
+  added: string;
 };
 
 const AlbumCard = ({
@@ -15,7 +15,7 @@ const AlbumCard = ({
   artistName,
   albumTitle,
   cover,
-  release,
+  added,
 }: Props) => {
   return (
     <div className="flex flex-col p-4 rounded-lg transform lg:hover:scale-105 lg:hover:shadow-lg smoothify">
@@ -26,7 +26,7 @@ const AlbumCard = ({
             <p className="-mt-2 text-right font-semibold uppercase">
               {albumTitle}
               <span>
-                <Chevron />
+                <Chevron size="small" />
               </span>
             </p>
           </div>
@@ -50,7 +50,7 @@ const AlbumCard = ({
             )}
           </div>
         </div>
-        <div className="mt-2 text-right text-xs">{release}</div>
+        <div className="mt-2 text-right text-xs">{added}</div>
       </Link>
     </div>
   );
