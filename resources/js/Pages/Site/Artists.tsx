@@ -10,7 +10,7 @@ const Artists = ({ artists }: Props) => {
   return (
     <Main title="Artists">
       <div>
-        <h2 className="font-heading font-bold text-4xl">Artists</h2>
+        <h2 className="font-heading text-4xl">Artists</h2>
       </div>
 
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 my-10">
