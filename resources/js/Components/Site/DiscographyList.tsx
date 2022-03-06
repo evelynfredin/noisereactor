@@ -7,7 +7,7 @@ type Props = {
   cover?: string;
 };
 
-const Discography = ({ pathToAlbum, albumTitle, cover }: Props) => {
+const DiscographyList = ({ pathToAlbum, albumTitle, cover }: Props) => {
   return (
     <div className="border-b last:border-0">
       <Link href={`/album/${pathToAlbum}`}>
@@ -36,4 +36,4 @@ const Discography = ({ pathToAlbum, albumTitle, cover }: Props) => {
   );
 };
 
-export default Discography;
+export default DiscographyList;

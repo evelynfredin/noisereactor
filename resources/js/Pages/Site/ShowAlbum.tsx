@@ -1,5 +1,5 @@
 import AlbumInfo from '@/Components/Site/AlbumInfo';
-import Discography from '@/Components/Site/Discography';
+import DiscographyList from '@/Components/Site/DiscographyList';
 import ReviewCard from '@/Components/Site/ReviewCard';
 import Main from '@/Layouts/Main';
 import React from 'react';
@@ -39,7 +39,7 @@ const ShowAlbum = ({ album, discography }: Props) => {
               </h3>
               <div className="p-3">
                 {discography.map((album) => (
-                  <Discography
+                  <DiscographyList
                     key={album.id}
                     pathToAlbum={album.id}
                     albumTitle={album.title}

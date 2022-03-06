@@ -1,4 +1,5 @@
 import ArtistInfo from '@/Components/Site/ArtistInfo';
+import DiscographyCard from '@/Components/Site/DiscographyCard';
 import Main from '@/Layouts/Main';
 import React from 'react';
 
@@ -31,6 +32,24 @@ const ShowArtist = ({ artist }: Props) => {
           )}
         </ArtistInfo>
       </section>
+
+      {artist.albums.length > 0 && (
+        <section className="my-20">
+          <h3 className="uppercase text-center md:text-left text-xl">
+            Albums by {artist.name}
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-5">
+            {artist.albums.map((album) => (
+              <DiscographyCard
+                key={album.id}
+                pathToAlbum={album.id}
+                cover={album.cover}
+                albumTitle={album.title}
+              />
+            ))}
+          </div>
+        </section>
+      )}
     </Main>
   );
 };

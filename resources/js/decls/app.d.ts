@@ -7,6 +7,7 @@ declare namespace App {
     slug: string;
     pic: string;
     albums_count: number;
+    albums: Album[];
     genres: Genre[];
     created_at: string;
     updated_at: string;
