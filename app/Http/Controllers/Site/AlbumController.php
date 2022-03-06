@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Album;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -14,6 +15,10 @@ class AlbumController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Site/Albums');
+        return Inertia::render('Site/Albums', [
+            'albums' => Album::latest()
+                ->with('artist')
+                ->get()
+        ]);
     }
 }
