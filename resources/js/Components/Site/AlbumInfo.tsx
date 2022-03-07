@@ -52,10 +52,12 @@ const AlbumInfo = ({
               <Chevron size="large" />
             </div>
           </Link>
-          <h2 className="text-xl md:text-3xl font-bold uppercase text-blue-500 pb-3">
+          <h2 className="text-xl md:text-3xl font-bold uppercase text-blue-500">
             {albumTitle}
-            <span className="text-sm text-gray-700 block">{edition}</span>
           </h2>
+          <h3 className="text-sm text-gray-700 bg-blue-200 py-2 px-3 inline-block my-3 rounded-full">
+            {edition}
+          </h3>
           <p className="block border-t pt-3">{description}</p>
         </div>
         <div className="bg-gray-100 py-2 rounded-bl-lg rounded-br-lg px-5 md:px-10 flex flex-col items-center md:flex-row justify-between uppercase text-sm md:text-base">

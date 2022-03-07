@@ -7,6 +7,7 @@ declare namespace App {
     slug: string;
     pic: string;
     albums_count: number;
+    albums: Album[];
     genres: Genre[];
     created_at: string;
     updated_at: string;
@@ -31,6 +32,17 @@ declare namespace App {
     description: string;
     released_date: string;
     cover: string;
+    review: Review;
+    created_at: string;
+    updated_at: string;
+  }
+
+  interface Review {
+    id: number;
+    album: Album;
+    excerpt: string;
+    content: string;
+    is_published: boolean;
     created_at: string;
     updated_at: string;
   }
