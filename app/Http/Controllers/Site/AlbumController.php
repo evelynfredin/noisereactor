@@ -40,7 +40,7 @@ class AlbumController extends Controller
 
     /**
      * Handle the incoming request
-     * @param \App\Models\Album  $album
+     *
      * @return \Inertia\Response
      */
     public function anniversary(): Response
