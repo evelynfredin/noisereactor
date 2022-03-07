@@ -38,9 +38,12 @@ declare namespace App {
   }
 
   interface Review {
+    id: number;
     album: Album;
     excerpt: string;
     content: string;
     is_published: boolean;
+    created_at: string;
+    updated_at: string;
   }
 }

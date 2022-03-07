@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Site\AlbumController;
 use App\Http\Controllers\Site\ArtistController;
-use App\Models\Artist;
+use App\Http\Controllers\Site\ReviewController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -34,5 +34,7 @@ Route::controller(AlbumController::class)->group(
         Route::get('/album/{album}', 'show')->name('show.album');
     }
 );
+
+Route::get('/reviews', ReviewController::class)->name('reviews');
 
 require __DIR__ . '/auth.php';
