@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 type Props = {
   review: string;
@@ -6,8 +7,8 @@ type Props = {
 
 const ReviewContent = ({ review }: Props) => {
   return (
-    <div className="p-5 md:p-10 bg-white rounded-lg mx-auto w-full">
-      {review}
+    <div className="p-5 md:p-10 bg-white rounded-lg mx-auto w-full review">
+      <ReactMarkdown>{review}</ReactMarkdown>
     </div>
   );
 };
