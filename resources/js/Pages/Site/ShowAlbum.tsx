@@ -1,6 +1,6 @@
 import AlbumInfo from '@/Components/Site/AlbumInfo';
 import DiscographyList from '@/Components/Site/DiscographyList';
-import ReviewCard from '@/Components/Site/ReviewCard';
+import ReviewContent from '@/Components/Site/ReviewContent';
 import Main from '@/Layouts/Main';
 import React from 'react';
 
@@ -29,7 +29,7 @@ const ShowAlbum = ({ album, discography }: Props) => {
 
       <div className="lg:max-w-5xl md:max-w-2xl mx-auto flex flex-col lg:flex-row mt-16 items-start lg:space-x-5">
         <section className="w-full lg:w-2/3 rounded-lg shadow-sm">
-          {album.review && <ReviewCard review={album.review.content} />}
+          {album.review && <ReviewContent review={album.review.content} />}
         </section>
         {discography.length > 0 && (
           <aside className="mt-10 lg:mt-0 w-full lg:w-1/3 mx-auto">
