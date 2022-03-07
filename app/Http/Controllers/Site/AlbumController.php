@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Album;
 use Inertia\Inertia;
 use Inertia\Response;
+use PhpParser\Node\Stmt\Return_;
 
 class AlbumController extends Controller
 {
@@ -33,6 +34,21 @@ class AlbumController extends Controller
             'album' => Album::with(['artist', 'label', 'review'])->findOrFail($album->id),
             'discography' => Album::where('artist_id', '=', $album->artist_id)
                 ->where('id', '!=', $album->id)
+                ->get()
+        ]);
+    }
+
+    /**
+     * Handle the incoming request
+     * @param \App\Models\Album  $album
+     * @return \Inertia\Response
+     */
+    public function anniversary(): Response
+    {
+        $getCurrentMonth = '%-' . date('m') . '-%';
+        return Inertia::render('Site/Anniversary', [
+            'albumsWithBirthMonth' => Album::with('artist')->where('released_date', 'LIKE', $getCurrentMonth)
+                ->latest()
                 ->get()
         ]);
     }

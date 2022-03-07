@@ -59,10 +59,10 @@ const Home = ({ latestAlbums, latestReviews, albumsWithBirthMonth }: Props) => {
                   />
                 ))}
             </div>
-            {albumsWithBirthMonth.length >= 8 && (
+            {albumsWithBirthMonth.length >= 4 && (
               <Link
                 className="flex justify-end text-sm text-gray-500 hover:text-blue-700 mt-5 px-5"
-                href="/"
+                href="/release-anniversary"
               >
                 View all...
               </Link>

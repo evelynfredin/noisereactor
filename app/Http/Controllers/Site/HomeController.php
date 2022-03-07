@@ -28,7 +28,7 @@ class HomeController extends Controller
                 ->get(),
             'albumsWithBirthMonth' => Album::where('released_date', 'LIKE', $getCurrentMonth)
                 ->inRandomOrder()
-                ->limit(8)
+                ->limit(6)
                 ->get()
         ]);
     }
