@@ -17,7 +17,7 @@ class ReviewController extends Controller
     public function __invoke(): Response
     {
         return Inertia::render('Site/Reviews', [
-            'reviews' => Review::with(['album.artist'])->get()
+            'reviews' => Review::with(['album.artist'])->where('is_published', '=', true)->get()
         ]);
     }
 }
