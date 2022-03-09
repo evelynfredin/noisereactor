@@ -72,3 +72,19 @@
   transform-origin: right bottom;
   left: 15%;
 }
+
+.review {
+  @apply px-8 py-5 bg-white rounded-lg mx-auto w-full;
+}
+
+.review h2 {
+  @apply text-2xl uppercase font-bold;
+}
+
+.review p {
+  @apply my-4 text-lg;
+}
+
+.review img {
+  @apply my-10;
+}

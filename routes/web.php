@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Site\AlbumController;
 use App\Http\Controllers\Site\ArtistController;
+use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ReviewController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,9 +18,7 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Site/Home');
-});
+Route::get('/', HomeController::class)->name('home');
 
 Route::controller(ArtistController::class)->group(
     function () {
@@ -32,6 +31,7 @@ Route::controller(AlbumController::class)->group(
     function () {
         Route::get('/albums', 'index')->name('albums');
         Route::get('/album/{album}', 'show')->name('show.album');
+        Route::get('/release-anniversary', 'anniversary');
     }
 );
 

@@ -43,6 +43,7 @@ const ShowAlbum = ({ album, discography }: Props) => {
                     key={album.id}
                     pathToAlbum={album.id}
                     albumTitle={album.title}
+                    cover={album.cover}
                   />
                 ))}
               </div>

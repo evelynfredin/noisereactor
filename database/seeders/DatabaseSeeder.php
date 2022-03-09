@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Album;
 use App\Models\Artist;
 use App\Models\Genre;
 use App\Models\Label;
 use App\Models\Review;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,7 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            AdminSeeder::class
+        ]);
+
         Label::factory(6)->create();
         $genres = Genre::factory(6)->create();
         Artist::factory(12)->hasAlbums(3)->create();
