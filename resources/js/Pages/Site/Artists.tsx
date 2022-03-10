@@ -1,9 +1,10 @@
+import { Pagination } from '@/Components/Global/Pagination';
 import ArtistCard from '@/Components/Site/ArtistCard';
 import Main from '@/Layouts/Main';
 import React from 'react';
 
 type Props = {
-  artists: App.Artist[];
+  artists: Laravel.Pagination<App.Artist>;
 };
 
 const Artists = ({ artists }: Props) => {
@@ -15,7 +16,7 @@ const Artists = ({ artists }: Props) => {
 
       <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 my-10">
         {artists &&
-          artists.map((artist) => (
+          artists.data.map((artist) => (
             <ArtistCard
               key={artist.id}
               slug={artist.slug}
@@ -42,6 +43,10 @@ const Artists = ({ artists }: Props) => {
             </ArtistCard>
           ))}
       </section>
+
+      <div>
+        <Pagination data={artists} />
+      </div>
     </Main>
   );
 };

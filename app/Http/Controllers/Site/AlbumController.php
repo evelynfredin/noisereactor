@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AlbumResource;
 use App\Models\Album;
 use Inertia\Inertia;
 use Inertia\Response;
-use PhpParser\Node\Stmt\Return_;
 
 class AlbumController extends Controller
 {
@@ -16,11 +16,10 @@ class AlbumController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('Site/Albums', [
-            'albums' => Album::latest()
-                ->with('artist')
-                ->get()
-        ]);
+        $albums = Album::latest()->with(['artist'])->paginate(45);
+
+        return Inertia::render('Site/Albums')
+            ->with('albums', AlbumResource::collection($albums));
     }
 
     /**
