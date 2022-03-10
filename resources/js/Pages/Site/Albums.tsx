@@ -1,13 +1,16 @@
+import { Pagination } from '@/Components/Global/Pagination';
 import AlbumCard from '@/Components/Site/AlbumCard';
 import Main from '@/Layouts/Main';
 import { diffForHumans } from '@/utils/helpers';
 import React from 'react';
 
 type Props = {
-  albums: App.Album[];
+  albums: Laravel.Pagination<App.Album>;
 };
 
 const Albums = ({ albums }: Props) => {
+  console.log(albums);
+
   return (
     <Main title="Albums">
       <div>
@@ -15,7 +18,7 @@ const Albums = ({ albums }: Props) => {
       </div>
 
       <section className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {albums.map((album) => (
+        {albums.data.map((album) => (
           <AlbumCard
             key={album.id}
             albumPath={album.id}
@@ -26,6 +29,10 @@ const Albums = ({ albums }: Props) => {
           />
         ))}
       </section>
+
+      <div>
+        <Pagination data={albums} />
+      </div>
     </Main>
   );
 };
