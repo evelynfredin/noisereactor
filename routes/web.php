@@ -20,6 +20,10 @@ use Inertia\Inertia;
 
 Route::get('/', HomeController::class)->name('home');
 
+Route::get('/admin', function () {
+    return Inertia::render('Admin/Home');
+})->name('admin.home')->middleware('auth');
+
 Route::controller(ArtistController::class)->group(
     function () {
         Route::get('/artists', 'index')->name('artists');
