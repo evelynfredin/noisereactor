@@ -4,6 +4,10 @@ import clsx from 'clsx';
 import { Link, usePage } from '@inertiajs/inertia-react';
 import { itemList } from '@/utils/adminNav';
 
+type Props = {
+  onMenuClick?: () => void;
+};
+
 const MainNavItem = ({
   url,
   label,
@@ -28,7 +32,7 @@ const MainNavItem = ({
     <Link
       href={url}
       className={clsx(
-        'text-lg w-full h-full',
+        'lg:text-lg w-full h-full md:w-auto lg:w-full',
         'focus:bg-blue-500 focus:text-white'
       )}
     >
@@ -48,7 +52,7 @@ const MainNavItem = ({
 const Navigation = () => {
   return (
     <div className="uppercase px-3 font-bold mt-5">
-      <ul className="flex items-start flex-col space-y-3">
+      <ul className="flex items-center flex-col space-y-3">
         {itemList.map((item) => (
           <MainNavItem
             key={item.id}

@@ -10,7 +10,7 @@ const Header = () => {
       <div className="container mx-auto items-center md:flex md:justify-between">
         <div className="container mx-auto flex items-center justify-between">
           <Logo path="/" className="fill-current text-gray-700" />
-          <Burger open={open} setOpen={setOpen} white={false} />
+          <Burger open={open} setOpen={setOpen} onSiteLayout />
         </div>
         <div
           className={`${
