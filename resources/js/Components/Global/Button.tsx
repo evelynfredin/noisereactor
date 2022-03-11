@@ -39,6 +39,10 @@ export const Button = <Type extends ElementType = 'button'>({
           // Primary - Default
           'border-gray-700 bg-gray-700 text-white hover:border-blue-600 hover:bg-blue-600 active:border-blue-600 active:bg-blue-600':
             primary && !danger && !rest.disabled,
+
+          // Secondary
+          'bg-transparent text-sm capitalize text-center  text-blue-200 font-bold hover:text-blue-400':
+            !primary && secondary,
         }
       )}
       {...rest}
