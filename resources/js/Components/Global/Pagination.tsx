@@ -64,7 +64,6 @@ const Link = ({
   ComponentPropsWithoutRef<typeof InertiaLink> & { active?: boolean }
 >) => (
   <InertiaLink
-    preserveScroll
     className={clsx(
       'rounded-full px-3 py-1 font-medium outline-none hover:bg-blue-200 hover:text-gray-600 focus:ring focus:ring-primary-900 focus:ring-offset-2',
       active ? 'bg-blue-500 text-white' : 'bg-blue-300'
