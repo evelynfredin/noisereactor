@@ -28,7 +28,7 @@ const ShowAlbum = ({ album, discography }: Props) => {
       </section>
 
       <div className="lg:max-w-5xl md:max-w-2xl mx-auto flex flex-col lg:flex-row mt-16 items-start lg:space-x-5">
-        <section className="w-full lg:w-2/3 rounded-lg shadow-sm">
+        <section className="w-full lg:w-2/3 rounded-lg shadow-sm" id="review">
           {album.review && <ReviewContent review={album.review.content} />}
         </section>
         {discography.length > 0 && (
