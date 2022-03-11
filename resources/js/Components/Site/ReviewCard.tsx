@@ -19,7 +19,7 @@ const ReviewCard = ({
 }: Props) => {
   return (
     <div className="group bg-white rounded-lg shadow-sm flex flex-col">
-      <Link href={`/album/${pathToAlbum}`} className="flex flex-grow">
+      <Link href={`/album/${pathToAlbum}#review`} className="flex flex-grow">
         <div className="bg-gray-200 smoothify group-hover:bg-blue-500 flex flex-col justify-end py-2 rounded-tl-md rounded-bl-md h-full text-gray-100">
           <p>
             <Chevron size="small" />

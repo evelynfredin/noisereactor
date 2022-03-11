@@ -4,10 +4,11 @@ import React from 'react';
 type Props = {
   setOpen: (isOpen: boolean) => void;
   open: boolean;
-  white: boolean;
+  onAdminLayout?: boolean;
+  onSiteLayout?: boolean;
 };
 
-const Burger = ({ setOpen, open, white }: Props) => {
+const Burger = ({ setOpen, open, onAdminLayout, onSiteLayout }: Props) => {
   const handleBurger = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setOpen(!open);
@@ -18,11 +19,16 @@ const Burger = ({ setOpen, open, white }: Props) => {
       aria-label="Toggle menu"
       onClick={handleBurger}
       className={clsx(
-        'burger relative flex h-[50px] w-[50px] cursor-pointer flex-col items-center justify-center rounded-full md:hidden',
+        'burger relative flex h-[50px] w-[50px] cursor-pointer flex-col items-center justify-center rounded-full',
         'hover:bg-gray-100',
         open
           ? 'bg-gray-100 outline-none ring-2 ring-blue-500 ring-offset-2'
-          : 'bg-transparent'
+          : 'bg-transparent',
+        onAdminLayout &&
+          !onSiteLayout &&
+          'text-white fill-current lg:hidden hover:bg-slate-700',
+        onAdminLayout && open && 'bg-slate-700',
+        onSiteLayout && 'md:hidden'
       )}
     >
       {open && (
