@@ -13,9 +13,9 @@ const Admin = ({ children, title }: PropsWithChildren<Props>) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <div className="bg-slate-800 flex flex-col lg:flex-row overflow-auto lg:overflow-hidden">
+      <div className="bg-slate-800 flex flex-col lg:flex-row lg:overflow-hidden">
         <Sidebar />
-        <div className="bg-gray-50 lg:rounded-tl-3xl lg:rounded-bl-3xl w-full h-screen overflow-hidden overflow-y-auto">
+        <div className="bg-gray-50 lg:rounded-tl-3xl lg:rounded-bl-3xl w-full h-screen lg:overflow-hidden lg:overflow-y-auto">
           <main className="px-10">
             <div className="my-10">
               <Heading h1 title={title} />
