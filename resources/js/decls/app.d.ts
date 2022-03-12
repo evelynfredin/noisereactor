@@ -46,4 +46,10 @@ declare namespace App {
     created_at: string;
     updated_at: string;
   }
+
+  interface Stat {
+    id: number;
+    stat: string;
+    count: number;
+  }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Site\AlbumController;
 use App\Http\Controllers\Site\ArtistController;
 use App\Http\Controllers\Site\HomeController;
@@ -19,10 +20,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', HomeController::class)->name('home');
-
-Route::get('/admin', function () {
-    return Inertia::render('Admin/Home');
-})->name('admin.home')->middleware('auth');
+Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::controller(ArtistController::class)->group(
     function () {
