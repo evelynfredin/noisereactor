@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAlbumController;
 use App\Http\Controllers\Admin\AdminArtistController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\Admin\LabelController;
 use App\Http\Controllers\Site\AlbumController;
 use App\Http\Controllers\Site\ArtistController;
@@ -65,6 +66,14 @@ Route::controller(LabelController::class)
     ->group(
         function () {
             Route::get('/admin/labels', 'index')->name('label.list');
+        }
+    );
+
+Route::controller(GenreController::class)
+    ->middleware('auth')
+    ->group(
+        function () {
+            Route::get('/admin/genres', 'index')->name('genre.list');
         }
     );
 
