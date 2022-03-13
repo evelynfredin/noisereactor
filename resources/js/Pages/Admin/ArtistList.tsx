@@ -1,5 +1,7 @@
+import { LinkButton } from '@/Components/Global/Button';
 import Edit from '@/Components/Global/Edit';
 import { Pagination } from '@/Components/Global/Pagination';
+import Plus from '@/Components/Global/Plus';
 import Table from '@/Components/Table/Table';
 import TableData from '@/Components/Table/TableData';
 import TableHead from '@/Components/Table/TableHead';
@@ -13,11 +15,16 @@ type Props = {
 };
 
 const ArtistList = ({ artists }: Props) => {
-  console.log(artists);
-
   return (
     <Admin title="Artists">
-      <div></div>
+      <div className="mb-10 flex justify-between items-center">
+        <div>Search placeholder</div>
+
+        <LinkButton create href={route('artist.create')}>
+          <Plus size="small" />
+          Add artist
+        </LinkButton>
+      </div>
       <section className="overflow-x-auto rounded shadow">
         <Table>
           <TableHead>

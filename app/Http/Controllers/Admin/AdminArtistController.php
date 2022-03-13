@@ -24,4 +24,14 @@ class AdminArtistController extends Controller
             'artists' => $this->artists->getArtistList()
         ]);
     }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @return \Inertia\Response
+     */
+    public function create(): Response
+    {
+        return Inertia::render('Admin/CreateArtist');
+    }
 }

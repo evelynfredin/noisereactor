@@ -50,6 +50,7 @@ Route::controller(AdminArtistController::class)
     ->group(
         function () {
             Route::get('/admin/artists', 'index')->name('artist.list');
+            Route::get('/admin/new/artist', 'create')->name('artist.create');
         }
     );
 
