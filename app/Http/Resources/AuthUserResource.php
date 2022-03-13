@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Arr;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Arr;
 
 class AuthUserResource extends JsonResource
 {
@@ -18,11 +18,9 @@ class AuthUserResource extends JsonResource
         return [
             $this->merge(
                 Arr::only(parent::toArray($request), [
-                    'id',
                     'username',
-                    'email'
                 ])
-            )
+            ),
         ];
     }
 }

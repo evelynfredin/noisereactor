@@ -13,6 +13,12 @@ declare namespace App {
     updated_at: string;
   }
 
+  interface User {
+    id: number;
+    username: string;
+    email: string;
+  }
+
   interface Genre {
     id: number;
     name: string;

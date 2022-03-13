@@ -1,11 +1,13 @@
 interface User {
-  id: number;
   username: string;
-  email: string;
+}
+
+interface Auth {
+  data: User;
 }
 
 interface SharedProps {
-  user: User;
+  user: Auth;
   flash: {
     message: string | null;
   };
