@@ -27,6 +27,7 @@ declare namespace App {
   interface Label {
     id: number;
     name: string;
+    albums_count: number;
   }
 
   interface Album {
