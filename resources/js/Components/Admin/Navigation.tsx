@@ -32,8 +32,8 @@ const MainNavItem = ({
     <Link
       href={url}
       className={clsx(
-        'lg:text-lg w-full h-full md:w-auto lg:w-full',
-        'focus:bg-blue-500 focus:text-white'
+        'lg:text-lg w-full h-full md:w-auto lg:w-full rounded-full',
+        'focus:bg-blue-500 focus:text-gray-50'
       )}
     >
       <li
@@ -58,7 +58,7 @@ const Navigation = () => {
             key={item.id}
             url={item.path}
             label={item.label}
-            exactUrlMatch={item.label === 'Home'}
+            exactUrlMatch={item.label === 'Dashboard'}
           />
         ))}
       </ul>
