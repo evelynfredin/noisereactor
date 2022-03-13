@@ -51,7 +51,7 @@ Route::controller(AdminArtistController::class)
         function () {
             Route::get('/admin/artists', 'index')->name('artist.list');
             Route::get('/admin/artist/new', 'create')->name('artist.create');
-            Route::get('/admin/artist/store', 'store')->name('artist.store');
+            Route::post('/admin/artist/store', 'store')->name('artist.store');
         }
     );
 

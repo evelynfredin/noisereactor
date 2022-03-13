@@ -53,9 +53,11 @@ const CreateArtist = () => {
     });
   };
 
+  console.log(errors);
+
   return (
     <Admin title="Create artist">
-      <form>
+      <form onSubmit={hanldeSubmit}>
         <FormItemWrapper>
           <FormLabel label="Artist name:" htmlFor="name" />
           <FormInput
