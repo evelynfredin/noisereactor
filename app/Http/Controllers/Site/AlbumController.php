@@ -3,23 +3,27 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AlbumResource;
 use App\Models\Album;
+use App\Services\AlbumService;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class AlbumController extends Controller
 {
+    public function __construct(
+        private AlbumService $albums
+    ) {
+    }
+
     /**
      * Handle the incoming request
      * @return \Inertia\Response
      */
     public function index(): Response
     {
-        $albums = Album::latest()->with(['artist'])->paginate(45);
-
-        return Inertia::render('Site/Albums')
-            ->with('albums', AlbumResource::collection($albums));
+        return Inertia::render('Site/Albums', [
+            'albums' => $this->albums->getAlbumList()
+        ]);
     }
 
     /**
