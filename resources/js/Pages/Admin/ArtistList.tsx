@@ -18,7 +18,7 @@ const ArtistList = ({ artists }: Props) => {
   return (
     <Admin title="Artists">
       <div></div>
-      <section className="overflow-x-auto bg-white rounded shadow">
+      <section className="overflow-x-auto rounded shadow">
         <Table>
           <TableHead>
             <TableRow className="font-bold text-left">
