@@ -13,6 +13,12 @@ declare namespace App {
     updated_at: string;
   }
 
+  interface User {
+    id: number;
+    username: string;
+    email: string;
+  }
+
   interface Genre {
     id: number;
     name: string;
@@ -45,5 +51,11 @@ declare namespace App {
     is_published: boolean;
     created_at: string;
     updated_at: string;
+  }
+
+  interface Stat {
+    id: number;
+    stat: string;
+    count: number;
   }
 }

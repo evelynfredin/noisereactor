@@ -3,25 +3,27 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ArtistResource;
 use App\Models\Artist;
+use App\Services\ArtistService;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class ArtistController extends Controller
 {
+    public function __construct(
+        private ArtistService $artists
+    ) {
+    }
+
     /**
      * Handle the incoming request
      * @return \Inertia\Response
      */
     public function index(): Response
     {
-        $artists = Artist::withCount('albums')
-            ->orderBy('name')
-            ->paginate(40);
-
-        return Inertia::render('Site/Artists')
-            ->with('artists', ArtistResource::collection($artists));
+        return Inertia::render('Site/Artists', [
+            'artists' => $this->artists->getArtistList()
+        ]);
     }
 
     /**

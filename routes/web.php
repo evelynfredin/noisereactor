@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminArtistController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Site\AlbumController;
 use App\Http\Controllers\Site\ArtistController;
 use App\Http\Controllers\Site\HomeController;
@@ -20,10 +22,6 @@ use Inertia\Inertia;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('/admin', function () {
-    return Inertia::render('Admin/Home');
-})->name('admin.home')->middleware('auth');
-
 Route::controller(ArtistController::class)->group(
     function () {
         Route::get('/artists', 'index')->name('artists');
@@ -40,5 +38,16 @@ Route::controller(AlbumController::class)->group(
 );
 
 Route::get('/reviews', ReviewController::class)->name('reviews');
+
+// Admin routes
+Route::get('/admin', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::controller(AdminArtistController::class)
+    ->middleware('auth')
+    ->group(
+        function () {
+            Route::get('/admin/artists', 'index')->name('artist.list');
+        }
+    );
 
 require __DIR__ . '/auth.php';

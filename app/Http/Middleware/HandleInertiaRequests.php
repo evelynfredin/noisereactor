@@ -39,13 +39,12 @@ class HandleInertiaRequests extends Middleware
                 if (!$request->user()) {
                     return;
                 }
+
                 return new AuthUserResource($request->user());
             },
-            'flash' => function () use ($request) {
-                return [
-                    'message' => $request->session()->get('message')
-                ];
-            }
+            'flash' => [
+                'message' => fn () => $request->session()->get('message'),
+            ],
         ]);
     }
 }
