@@ -22,11 +22,13 @@ declare namespace App {
   interface Genre {
     id: number;
     name: string;
+    artists_count: number;
   }
 
   interface Label {
     id: number;
     name: string;
+    albums_count: number;
   }
 
   interface Album {

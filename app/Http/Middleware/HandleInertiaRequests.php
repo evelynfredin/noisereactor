@@ -43,7 +43,8 @@ class HandleInertiaRequests extends Middleware
                 return new AuthUserResource($request->user());
             },
             'flash' => [
-                'message' => fn () => $request->session()->get('message'),
+                'success' => $request->session()->get('success'),
+                'error' => $request->session()->get('error'),
             ],
         ]);
     }

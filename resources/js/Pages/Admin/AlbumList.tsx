@@ -1,7 +1,5 @@
-import { LinkButton } from '@/Components/Global/Button';
 import Edit from '@/Components/Global/Edit';
 import { Pagination } from '@/Components/Global/Pagination';
-import Plus from '@/Components/Global/Plus';
 import Table from '@/Components/Table/Table';
 import TableData from '@/Components/Table/TableData';
 import TableHead from '@/Components/Table/TableHead';
@@ -11,45 +9,46 @@ import Admin from '@/Layouts/Admin';
 import React from 'react';
 
 type Props = {
-  artists: Laravel.Pagination<App.Artist>;
+  albums: Laravel.Pagination<App.Album>;
 };
 
-const ArtistList = ({ artists }: Props) => {
-  return (
-    <Admin title="Artists">
-      <div className="mb-10 flex justify-between items-center">
-        <div>Search placeholder</div>
+const AlbumList = ({ albums }: Props) => {
+  console.log(albums);
 
-        <LinkButton create href={route('artist.create')}>
-          <Plus size="small" />
-          Add artist
-        </LinkButton>
-      </div>
+  return (
+    <Admin title="Albums">
       <section className="overflow-x-auto rounded shadow">
         <Table>
-          <TableHead>
-            <TableRow className="font-bold text-left">
-              <TableHeader label="Artist" />
-              <TableHeader label="Total Albums" />
-              <TableHeader />
-            </TableRow>
-          </TableHead>
           <tbody>
-            {artists.data.map((artist) => (
+            {albums.data.map((album) => (
               <TableRow
-                key={artist.id}
+                key={album.id}
                 className="hover:bg-blue-50 focus-within:bg-gray-100 odd:bg-white even:bg-slate-50"
               >
                 <TableData>
                   <div
                     className="flex items-center gap-x-2"
-                    title="Edit artist info"
+                    title="Edit album info"
                   >
-                    {artist.name}
+                    {album.cover !== null ? (
+                      <img
+                        src={`/storage/${album.cover}`}
+                        alt={`Album cover for ${album.title}`}
+                        className="w-[40px] rounded-md mr-2"
+                      />
+                    ) : (
+                      <img
+                        src="/images/album-default.jpg"
+                        alt="Default"
+                        className="w-[40px] rounded-md mr-2"
+                      />
+                    )}
+                    {album.title}
                     <Edit size="small" />
                   </div>
                 </TableData>
-                <TableData>{artist.albums_count}</TableData>
+
+                <TableData>Add review</TableData>
                 <TableData>Delete</TableData>
               </TableRow>
             ))}
@@ -57,10 +56,10 @@ const ArtistList = ({ artists }: Props) => {
         </Table>
       </section>
       <div className="my-20">
-        <Pagination data={artists} />
+        <Pagination data={albums} />
       </div>
     </Admin>
   );
 };
 
-export default ArtistList;
+export default AlbumList;
