@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAlbumController;
 use App\Http\Controllers\Admin\AdminArtistController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Site\AlbumController;
@@ -47,6 +48,14 @@ Route::controller(AdminArtistController::class)
     ->group(
         function () {
             Route::get('/admin/artists', 'index')->name('artist.list');
+        }
+    );
+
+Route::controller(AdminAlbumController::class)
+    ->middleware('auth')
+    ->group(
+        function () {
+            Route::get('/admin/albums', 'index')->name('album.list');
         }
     );
 
