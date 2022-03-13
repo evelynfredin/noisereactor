@@ -10,6 +10,7 @@ type Props = {
 
 const Admin = ({ children, title }: PropsWithChildren<Props>) => {
   const { user } = usePageProps();
+
   return (
     <>
       <Head>
@@ -18,7 +19,7 @@ const Admin = ({ children, title }: PropsWithChildren<Props>) => {
       <div className="bg-slate-800 flex flex-col lg:flex-row lg:overflow-hidden">
         <Sidebar />
         <div className="bg-gray-50 lg:rounded-tl-3xl lg:rounded-bl-3xl w-full h-screen lg:overflow-hidden lg:overflow-y-auto">
-          <main className="px-10">
+          <main className="px-3 md:px-10">
             <div className="my-10 flex justify-between items-center">
               <Heading h1 title={title} />
               <Heading h3 title={`Welcome, ${user.username}!`} />
