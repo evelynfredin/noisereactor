@@ -5,6 +5,7 @@ interface User {
 interface SharedProps {
   user: User;
   flash: {
-    message: string | null;
+    success: string | null;
+    error: string | null;
   };
 }
