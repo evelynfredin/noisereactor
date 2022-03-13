@@ -31,7 +31,7 @@ const ArtistList = ({ artists }: Props) => {
             {artists.data.map((artist) => (
               <TableRow
                 key={artist.id}
-                className="hover:bg-gray-100 focus-within:bg-gray-100"
+                className="hover:bg-blue-50 focus-within:bg-gray-100 odd:bg-white even:bg-slate-50"
               >
                 <TableData>
                   <div
