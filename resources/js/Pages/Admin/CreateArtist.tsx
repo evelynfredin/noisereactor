@@ -53,8 +53,6 @@ const CreateArtist = () => {
     });
   };
 
-  console.log(errors);
-
   return (
     <Admin title="Create artist">
       <form onSubmit={hanldeSubmit}>
