@@ -20,7 +20,6 @@ class ArtistFactory extends Factory
             'name' => $this->faker->words(rand(1, 4), true),
             'bio' => $this->faker->paragraph(mt_rand(4, 6)),
             'website' => $this->faker->url(),
-            'slug' => $this->faker->unique()->word
         ];
     }
 }
