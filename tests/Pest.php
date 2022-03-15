@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +44,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function actingAs(App\Models\User $user, string $driver = null): TestCase
 {
-    // ..
+    return test()->actingAs($user, $driver);
 }

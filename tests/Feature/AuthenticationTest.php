@@ -3,7 +3,6 @@
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Inertia\Testing\AssertableInertia as Assert;
-
 use function Pest\Laravel\post;
 
 it('renders the login page')
@@ -34,12 +33,14 @@ it('prevents user from login with incorrect password', function () {
 });
 
 it('hides login page from authenticated user', function () {
-    $user = User::factory()->create();
-
-    $this->actingAs($user)
+    actingAs(User::factory()->create())
         ->get('/login')
         ->assertStatus(302);
 });
+
+it('protects admin dashboard from unauthenticated user')
+    ->get('/admin')
+    ->assertStatus(302);
 
 it('displays errors when empty login details')
     ->post('/login')
