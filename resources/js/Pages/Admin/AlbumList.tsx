@@ -13,8 +13,6 @@ type Props = {
 };
 
 const AlbumList = ({ albums }: Props) => {
-  console.log(albums);
-
   return (
     <Admin title="Albums">
       <section className="overflow-x-auto rounded shadow">

@@ -10,8 +10,6 @@ type Props = {
 };
 
 const ShowAlbum = ({ album, discography }: Props) => {
-  console.log(album);
-
   return (
     <Main title="Album">
       <section>

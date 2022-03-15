@@ -7,8 +7,6 @@ type Props = {
 };
 
 const Labels = ({ labels }: Props) => {
-  console.log(labels);
-
   return (
     <Admin title="Labels">
       <div className="overflow-x-auto grid grid-cols-2 lg:grid-cols-3 gap-5 py-10">
