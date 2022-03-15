@@ -63,7 +63,6 @@ const StatusMessages = () => {
 
   return (
     <div>
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {flash.success && visible && (
         <div className="my-10 flex items-center justify-between bg-green-500 rounded w-full">
           <div className="flex items-center">
@@ -75,7 +74,7 @@ const StatusMessages = () => {
           <ButtonClose onClick={() => setVisible(false)} color="green" />
         </div>
       )}
-      {(flash.error || numOfErrors > 0) && (
+      {(flash.error || numOfErrors > 0) && visible && (
         <div className="my-10 flex items-center justify-between bg-red-500 rounded w-full">
           <div className="flex items-center">
             <IconDanger />

@@ -1,3 +1,4 @@
+import StatusMessages from '@/Components/Admin/StatusMessage';
 import FormInput from '@/Components/Form/FormInput';
 import FormItemWrapper from '@/Components/Form/FormItemWrapper';
 import FormLabel from '@/Components/Form/FormLabel';
@@ -49,6 +50,7 @@ const Login = () => {
       <div className="h-screen flex items-center">
         <section className="w-full mx-5 md:max-w-sm md:mx-auto">
           <Logo className="fill-current text-gray-400 mx-auto" path="/" />
+          <StatusMessages />
           <div className="bg-slate-100 px-5 pt-10 pb-5 rounded-lg shadow-sm mt-10">
             <h3 className="text-2xl text-center">Welcome back!</h3>
             <form onSubmit={handleSubmit}>
