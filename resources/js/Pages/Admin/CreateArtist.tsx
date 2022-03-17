@@ -46,7 +46,7 @@ const CreateArtist = () => {
     setData(e.target.name, e.target.value);
   }
 
-  const hanldeSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const hanldeSubmit = (e: FormEvent<CreateForm>) => {
     e.preventDefault();
     void post(route('artist.store'), {
       onFinish: () => reset('name', 'website', 'bio'),

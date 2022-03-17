@@ -29,7 +29,7 @@ class StoreArtistRequest extends FormRequest
             'bio' => 'required',
             'website' => 'required|url',
             'slug' => 'string',
-            'pic' => 'sometimes|image|nullable|mimes:png,jpg,jpeg|max:2048',
+            'pic' => 'image|nullable|mimes:png,jpg,jpeg|max:2048',
         ];
     }
 }

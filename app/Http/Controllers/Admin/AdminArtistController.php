@@ -41,6 +41,36 @@ class AdminArtistController extends Controller
     public function store(StoreArtistRequest $request)
     {
         Artist::create($request->validated());
-        return redirect('/admin/artists')->with('success', 'Artist created.');
+        return redirect('/admin/artists')->with('success', 'Artist successfully created.');
+    }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Artist  $artist
+     * @return \Inertia\Response
+     */
+    public function edit(Artist $artist): Response
+    {
+        return Inertia::render('Admin/EditArtist', [
+            'artist' => Artist::findOrFail($artist->id)
+        ]);
+    }
+
+    public function update(Artist $artist, StoreArtistRequest $request)
+    {
+        if ($request->validated()) {
+            if ($request->hasFile('pic')) {
+                $artist->update(
+                    collect($request->validated())
+                        ->merge(['pic' => $request->pic->store('uploads/artist')])
+                        ->toArray()
+                );
+                return redirect(route('artist.list'))->with('success', 'Artist successfully updated!');
+            }
+        }
+
+        $artist->update(array_filter($request->validated()));
+        return redirect(route('artist.list'))->with('success', 'Artist successfully updated!');
     }
 }

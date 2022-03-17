@@ -8,6 +8,7 @@ type BaseProps<Type extends ElementType> = {
   small?: boolean;
   danger?: boolean;
   create?: boolean;
+  noButton?: boolean;
   internalAs?: Type;
 };
 
@@ -19,6 +20,7 @@ export const Button = <Type extends ElementType = 'button'>({
   small = false,
   danger = false,
   create = false,
+  noButton = false,
   internalAs,
   ...rest
 }: Props<Type>) => {
@@ -40,7 +42,7 @@ export const Button = <Type extends ElementType = 'button'>({
 
           // Primary - Default
           'border-gray-700 bg-gray-700 text-white justify-center hover:border-blue-600 hover:bg-blue-600 active:border-blue-600 active:bg-blue-600':
-            primary && !danger && !rest.disabled && !create,
+            primary && !danger && !rest.disabled && !create && !noButton,
 
           // Secondary
           'bg-transparent text-sm capitalize text-center  text-blue-200 font-bold hover:text-blue-400':
@@ -49,6 +51,9 @@ export const Button = <Type extends ElementType = 'button'>({
           // Create {resource}
           'rounded-full bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white smoothify justify-between gap-x-2':
             create,
+
+          'flex items-center gap-x-2 bg-transparent border-none text-base font-normal px-0 hover:text-blue-700':
+            noButton,
         }
       )}
       {...rest}
