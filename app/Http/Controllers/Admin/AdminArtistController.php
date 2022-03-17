@@ -66,11 +66,11 @@ class AdminArtistController extends Controller
                         ->merge(['pic' => $request->pic->store('uploads/artist')])
                         ->toArray()
                 );
-                return redirect('/admin')->with('success', 'Artist successfully updated!');
+                return redirect(route('artist.list'))->with('success', 'Artist successfully updated!');
             }
         }
 
         $artist->update(array_filter($request->validated()));
-        return redirect(route('artist.list'))->with('success', 'Artist updated.');
+        return redirect(route('artist.list'))->with('success', 'Artist successfully updated!');
     }
 }

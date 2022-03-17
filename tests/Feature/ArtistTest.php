@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Artist;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 use function Pest\Laravel\post;
 use function Pest\Laravel\get;
+use function Pest\Laravel\put;
 
 it('renders artists page')
     ->get('/artists')
@@ -55,5 +57,33 @@ it('renders the artist page for authenticated user', function () {
 
 it('protects admin artist view from unauthenticated user', function () {
     get(route('artist.list'))
+        ->assertStatus(302);
+});
+
+it('can update artist when authenticated', function () {
+
+    $artist = Artist::factory()->create();
+    actingAs(User::factory()->create())
+        ->followingRedirects()
+        ->put(route('artist.update', $artist->first()), [
+            'name' => 'Updated email name',
+            'bio' => 'Updated email bio',
+            'website' => 'https://noisereactor.test',
+        ])
+        ->assertValid();
+
+    assertDatabaseHas('artists', [
+        'name' => 'Updated email name',
+    ]);
+});
+
+it('cant update artist when unauthenticated', function () {
+
+    $artist = Artist::factory()->create();
+    put(route('artist.update', $artist->first()), [
+        'name' => 'Updated email name',
+        'bio' => 'Updated email bio',
+        'website' => 'https://noisereactor.test',
+    ])
         ->assertStatus(302);
 });

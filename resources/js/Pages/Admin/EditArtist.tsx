@@ -27,7 +27,7 @@ interface FormElements extends HTMLFormControlsCollection {
 }
 
 type FormData = {
-  _method: 'POST';
+  _method: 'PUT';
   name: string;
   website: string;
   bio: string;
@@ -44,7 +44,7 @@ type Props = {
 
 const EditArtist = ({ artist }: Props) => {
   const { data, post, setData, processing, errors } = useForm<FormData>({
-    _method: 'POST',
+    _method: 'PUT',
     name: artist.name,
     bio: artist.bio,
     website: artist.website,
