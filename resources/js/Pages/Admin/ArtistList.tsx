@@ -41,13 +41,15 @@ const ArtistList = ({ artists }: Props) => {
                 className="hover:bg-blue-50 focus-within:bg-gray-100 odd:bg-white even:bg-slate-50"
               >
                 <TableData>
-                  <div
-                    className="flex items-center gap-x-2"
+                  <LinkButton
                     title="Edit artist info"
+                    href={route('artist.edit', [artist.slug])}
+                    as="button"
+                    noButton
                   >
                     {artist.name}
                     <Edit size="small" />
-                  </div>
+                  </LinkButton>
                 </TableData>
                 <TableData>{artist.albums_count}</TableData>
                 <TableData>Delete</TableData>

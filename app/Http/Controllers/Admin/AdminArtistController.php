@@ -41,7 +41,7 @@ class AdminArtistController extends Controller
     public function store(StoreArtistRequest $request)
     {
         Artist::create($request->validated());
-        return redirect('/admin/artists')->with('success', 'Artist created.');
+        return redirect('/admin/artists')->with('success', 'Artist successfully created.');
     }
 
     /**
@@ -66,11 +66,11 @@ class AdminArtistController extends Controller
                         ->merge(['pic' => $request->pic->store('uploads/artist')])
                         ->toArray()
                 );
-                return redirect('/admin')->with('success', 'Artist updated.');
+                return redirect('/admin')->with('success', 'Artist successfully updated!');
             }
         }
 
         $artist->update(array_filter($request->validated()));
-        return redirect('/admin')->with('success', 'Artist updated.');
+        return redirect(route('artist.list'))->with('success', 'Artist updated.');
     }
 }

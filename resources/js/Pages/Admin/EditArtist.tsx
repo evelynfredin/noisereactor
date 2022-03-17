@@ -66,7 +66,9 @@ const EditArtist = ({ artist }: Props) => {
 
   return (
     <Admin title={artist.name}>
-      <form onSubmit={handleSubmit}>
+      <div>{errors.name}</div>
+
+      <form onSubmit={handleSubmit} className="mb-20">
         <FormItemWrapper>
           <FormLabel label="Artist name:" htmlFor="name" />
           <FormInput
