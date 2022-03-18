@@ -8,7 +8,7 @@ import Navigation from './Navigation';
 const Sidebar = () => {
   const [open, setOpen] = useState<boolean>(false);
   return (
-    <div className="flex lg:max-h-screen lg:min-w-[270px] flex-col">
+    <div className="flex lg:max-w-[270px] flex-col absolute w-full bg-slate-800 lg:static">
       <div className="flex justify-between lg:justify-center items-center lg:mt-5 lg:mb-10 px-5 py-5 lg:py-0 lg:px-0">
         <Logo
           path="/admin"
