@@ -73,4 +73,10 @@ class AdminArtistController extends Controller
         $artist->update(array_filter($request->validated()));
         return redirect(route('artist.list'))->with('success', 'Artist successfully updated!');
     }
+
+    public function destroy(Artist $artist)
+    {
+        $artist->delete();
+        return redirect(route('artist.list'))->with('success', 'Artist has been deleted!');
+    }
 }

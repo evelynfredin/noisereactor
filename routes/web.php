@@ -54,6 +54,7 @@ Route::controller(AdminArtistController::class)
             Route::post('/admin/artist/store', 'store')->name('artist.store');
             Route::get('/admin/{artist:slug}/edit', 'edit')->name('artist.edit');
             Route::put('/admin/{artist}/', 'update')->name('artist.update');
+            Route::delete('/admin/{artist}/delete', 'destroy')->name('artist.destroy');
         }
     );
 
