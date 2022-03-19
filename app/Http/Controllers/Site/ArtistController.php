@@ -22,7 +22,7 @@ class ArtistController extends Controller
     public function index(): Response
     {
         return Inertia::render('Site/Artists', [
-            'artists' => $this->artists->getArtistList()
+            'artists' => $this->artists->getArtistList(40)
         ]);
     }
 
