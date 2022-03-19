@@ -23,7 +23,8 @@ class AlbumResource extends JsonResource
                     'title',
                     'cover',
                     'created_at',
-                    'artist'
+                    'artist',
+                    'review'
                 ])
             )
         ];

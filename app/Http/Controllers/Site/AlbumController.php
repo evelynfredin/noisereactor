@@ -22,7 +22,7 @@ class AlbumController extends Controller
     public function index(): Response
     {
         return Inertia::render('Site/Albums', [
-            'albums' => $this->albums->getAlbumList()
+            'albums' => $this->albums->getAlbumList(['artist'], 45)
         ]);
     }
 

@@ -20,7 +20,7 @@ class AdminAlbumController extends Controller
     public function index()
     {
         return Inertia::render('Admin/AlbumList', [
-            'albums' => $this->albums->getAlbumList()
+            'albums' => $this->albums->getAlbumList(['artist', 'review'], 48)
         ]);
     }
 }
