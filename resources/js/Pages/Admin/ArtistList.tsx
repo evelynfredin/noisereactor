@@ -16,7 +16,7 @@ const ArtistList = ({ artists }: Props) => {
 
   return (
     <Admin title="Artists">
-      <div className="my-10 flex justify-between items-center">
+      <div className="mt-10 flex justify-between items-center">
         <div>Search placeholder</div>
         <LinkButton create href={route('artist.create')}>
           <Plus size="small" />

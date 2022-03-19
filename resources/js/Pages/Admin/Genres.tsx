@@ -9,7 +9,7 @@ type Props = {
 const Genres = ({ genres }: Props) => {
   return (
     <Admin title="Genres">
-      <div className="grid grid-cols-2 mx-auto w-full md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 mx-auto w-full md:grid-cols-4 gap-3 mt-10">
         {genres.map((genre) => (
           <Stats
             key={genre.id}

@@ -15,7 +15,7 @@ type Props = {
 const AlbumList = ({ albums }: Props) => {
   return (
     <Admin title="Albums">
-      <section className="overflow-x-auto rounded shadow">
+      <section className="overflow-x-auto rounded shadow mt-10">
         <Table>
           <tbody>
             {albums.data.map((album) => (

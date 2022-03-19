@@ -9,7 +9,7 @@ type Props = {
 const Home = ({ stats }: Props) => {
   return (
     <Admin title="Admin">
-      <section className="grid grid-cols-1 mx-auto w-full md:grid-cols-3 gap-10">
+      <section className="grid grid-cols-1 mx-auto w-full md:grid-cols-3 gap-10 mt-10">
         {stats &&
           stats.map((stat) => (
             <Stats key={stat.id} label={stat.stat} count={stat.count} />
