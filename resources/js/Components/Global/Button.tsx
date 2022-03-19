@@ -7,6 +7,7 @@ type BaseProps<Type extends ElementType> = {
   secondary?: boolean;
   small?: boolean;
   danger?: boolean;
+  dangerBtn?: boolean;
   create?: boolean;
   noButton?: boolean;
   internalAs?: Type;
@@ -19,6 +20,7 @@ export const Button = <Type extends ElementType = 'button'>({
   secondary = false,
   small = false,
   danger = false,
+  dangerBtn = false,
   create = false,
   noButton = false,
   internalAs,
@@ -32,7 +34,9 @@ export const Button = <Type extends ElementType = 'button'>({
       className={clsx(
         'flex items-center whitespace-nowrap border-2 text-lg font-headings font-bold outline-none transition-colors',
         'focus:ring-1',
-        danger ? 'ring-red-700' : 'ring-blue-700',
+        danger
+          ? 'border-0 ring-transparent text-red-700 hover:underline decoration-dotted px-0 py-0 rounded-none underline-offset-2'
+          : 'ring-blue-700',
         {
           'pointer-events-none': rest.disabled,
 
@@ -42,18 +46,26 @@ export const Button = <Type extends ElementType = 'button'>({
 
           // Primary - Default
           'border-gray-700 bg-gray-700 text-white justify-center hover:border-blue-600 hover:bg-blue-600 active:border-blue-600 active:bg-blue-600':
-            primary && !danger && !rest.disabled && !create && !noButton,
+            primary &&
+            !danger &&
+            !dangerBtn &&
+            !rest.disabled &&
+            !create &&
+            !noButton,
 
           // Secondary
           'bg-transparent text-sm capitalize text-center  text-blue-200 font-bold hover:text-blue-400':
             !primary && secondary,
 
           // Create {resource}
-          'rounded-full bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white smoothify justify-between gap-x-2':
+          'rounded-full bg-transparent border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white justify-between gap-x-2':
             create,
 
-          'flex items-center gap-x-2 bg-transparent border-none text-base font-normal px-0 hover:text-blue-700':
+          'flex items-center gap-x-2 bg-transparent border-none text-base font-normal px-1 hover:text-blue-700':
             noButton,
+
+          'border-red-700 bg-red-700 text-white justify-center hover:border-red-600 hover:bg-red-600 active:border-red-600 active:bg-red-600':
+            dangerBtn,
         }
       )}
       {...rest}
