@@ -5,6 +5,7 @@ use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
+use function Pest\Laravel\delete;
 use function Pest\Laravel\post;
 use function Pest\Laravel\get;
 use function Pest\Laravel\put;
@@ -86,4 +87,28 @@ it('cant update artist when unauthenticated', function () {
         'website' => 'https://noisereactor.test',
     ])
         ->assertStatus(302);
+});
+
+it('can delete artist when authenticated', function () {
+    $user = User::factory()->create();
+    $artist = Artist::factory(5)->create();
+
+    actingAs($user)
+        ->followingRedirects()
+        ->delete(route('artist.destroy', 1));
+
+    assertDatabaseMissing('artists', [
+        'id' => 1
+    ]);
+});
+
+it('can delete artist when unauthenticated', function () {
+
+    Artist::factory(5)->create();
+    delete(route('artist.destroy', 1))
+        ->assertStatus(302);
+
+    assertDatabaseHas('artists', [
+        'id' => 1
+    ]);
 });
