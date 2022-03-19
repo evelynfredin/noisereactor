@@ -12,14 +12,14 @@ type Props = {
 };
 
 const ArtistList = ({ artists }: Props) => {
-  const [confirm, setConfirm] = useState<boolean>(false);
+  console.log(artists);
 
   return (
     <Admin title="Artists">
       <div className="mt-10 flex justify-between items-center">
         <div>Search placeholder</div>
         <LinkButton create href={route('artist.create')}>
-          <Plus size="small" />
+          <Plus size="normal" />
           Add artist
         </LinkButton>
       </div>
@@ -38,7 +38,7 @@ const ArtistList = ({ artists }: Props) => {
                     <h3 className="text-lg flex md:text-xl font-bold text-left group-hover:text-blue-500">
                       {artist.name}
                     </h3>
-                    <div className="w-[20px]">
+                    <div className="w-[20px] text-gray-200">
                       <Edit size="normal" />
                     </div>
                   </div>

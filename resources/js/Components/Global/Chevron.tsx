@@ -11,7 +11,7 @@ const Chevron = ({ size }: Props) => {
       xmlns="http://www.w3.org/2000/svg"
       className={clsx('inline-flex', {
         'h-3 w-3': size === 'small',
-        'h-6 w-6': size === 'normal',
+        'h-4 w-4': size === 'normal',
         'h-8 w-8': size === 'large',
       })}
       fill="none"
