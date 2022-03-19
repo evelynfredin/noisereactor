@@ -91,7 +91,7 @@ const EditArtist = ({ artist }: Props) => {
         </Confirm>
       </div>
       <Admin title={artist.name}>
-        <div className="flex justify-end mt-10 md:mt-0">
+        <div className="flex justify-end mt-5 md:mt-0">
           <Button dangerBtn onClick={() => setDialog(true)}>
             Delete
           </Button>
