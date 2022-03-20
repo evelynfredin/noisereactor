@@ -54,8 +54,8 @@ const CreateArtist = () => {
   };
 
   return (
-    <Admin title="Create artist">
-      <form onSubmit={hanldeSubmit}>
+    <Admin title="New artist">
+      <form onSubmit={hanldeSubmit} className="my-10">
         <FormItemWrapper>
           <FormLabel label="Artist name:" htmlFor="name" />
           <FormInput
