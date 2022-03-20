@@ -37,10 +37,6 @@ it('prevents unauthenticated user from creating an artist', function () {
         'website' => 'https://www.refactoring.com'
     ]))
         ->assertStatus(302);
-
-    assertDatabaseMissing('artists', [
-        'name' => 'Refactoring Hell'
-    ]);
 });
 
 it('renders the artist page for authenticated user', function () {
@@ -107,8 +103,4 @@ it('can delete artist when unauthenticated', function () {
     Artist::factory(5)->create();
     delete(route('artist.destroy', 1))
         ->assertStatus(302);
-
-    assertDatabaseHas('artists', [
-        'id' => 1
-    ]);
 });

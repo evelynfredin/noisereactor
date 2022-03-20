@@ -4,7 +4,6 @@ use App\Models\Artist;
 use App\Models\Label;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
-
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 use function Pest\Laravel\post;
@@ -42,8 +41,4 @@ it('prevents unauthenticated user from creating an album', function () {
         'label_id' => Label::factory()->create()
     ]))
         ->assertStatus(302);
-
-    assertDatabaseMissing('artists', [
-        'title' => 'Pest Greatest Hits 2',
-    ]);
 });
