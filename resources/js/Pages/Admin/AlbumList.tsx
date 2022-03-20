@@ -18,7 +18,7 @@ const AlbumList = ({ albums }: Props) => {
     <Admin title="Albums">
       <div className="mt-10 flex justify-between items-center">
         <div>Search placeholder</div>
-        <LinkButton create href={'/'}>
+        <LinkButton create href={route('album.create')}>
           <Plus size="normal" />
           Add album
         </LinkButton>

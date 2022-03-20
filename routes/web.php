@@ -63,6 +63,8 @@ Route::controller(AdminAlbumController::class)
     ->group(
         function () {
             Route::get('/admin/albums', 'index')->name('album.list');
+            Route::get('/admin/album/new', 'create')->name('album.create');
+            Route::post('/admin/album/store', 'store')->name('album.store');
         }
     );
 
