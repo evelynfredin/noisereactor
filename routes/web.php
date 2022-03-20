@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAlbumController;
 use App\Http\Controllers\Admin\AdminArtistController;
+use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\Admin\LabelController;
@@ -67,6 +68,14 @@ Route::controller(AdminAlbumController::class)
             Route::get('/admin/album/{album:id}/edit', 'edit')->name('album.edit');
             Route::put('/admin/album/{album}', 'update')->name('album.update');
             Route::delete('/admin/album/{album}/delete', 'destroy')->name('album.destroy');
+        }
+    );
+
+Route::controller(AdminReviewController::class)
+    ->middleware('auth')
+    ->group(
+        function () {
+            Route::get('/admin/review/{album:id}', 'create')->name('review.create');
         }
     );
 

@@ -60,7 +60,7 @@ const AlbumList = ({ albums }: Props) => {
                   small
                   className="w-full py-3 flex justify-center items-center hover:text-white hover:bg-blue-600 rounded-bl-md"
                   title={album.review ? 'Edit review' : 'Add review'}
-                  href={route('show.album', [album.id])}
+                  href={route('review.create', [album.id])}
                 >
                   {album.review ? (
                     <>
