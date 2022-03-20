@@ -24,7 +24,7 @@ class AdminArtistController extends Controller
     public function index(): Response
     {
         return Inertia::render('Admin/ArtistList', [
-            'artists' => $this->artists->getArtistList()
+            'artists' => $this->artists->getArtistList(42)
         ]);
     }
 

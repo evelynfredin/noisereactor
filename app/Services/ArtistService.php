@@ -7,11 +7,11 @@ use App\Models\Artist;
 
 class ArtistService
 {
-    public function getArtistList()
+    public function getArtistList(int $max)
     {
         $artists = Artist::withCount('albums')
             ->orderBy('name')
-            ->paginate(40);
+            ->paginate($max);
 
         return ArtistResource::collection($artists);
     }

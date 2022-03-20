@@ -7,9 +7,9 @@ use App\Models\Album;
 
 class AlbumService
 {
-    public function getAlbumList()
+    public function getAlbumList(array $relationship, int $max)
     {
-        $albums = Album::latest()->with(['artist'])->paginate(45);
+        $albums = Album::latest()->with($relationship)->paginate($max);
 
         return AlbumResource::collection($albums);
     }

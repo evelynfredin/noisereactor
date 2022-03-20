@@ -1,4 +1,5 @@
 import { LinkButton } from '@/Components/Global/Button';
+import Chevron from '@/Components/Global/Chevron';
 import Edit from '@/Components/Global/Edit';
 import { Pagination } from '@/Components/Global/Pagination';
 import Plus from '@/Components/Global/Plus';
@@ -11,39 +12,54 @@ type Props = {
 };
 
 const ArtistList = ({ artists }: Props) => {
-  const [confirm, setConfirm] = useState<boolean>(false);
+  console.log(artists);
 
   return (
     <Admin title="Artists">
-      <div className="my-10 flex justify-between items-center">
+      <div className="mt-10 flex justify-between items-center">
         <div>Search placeholder</div>
         <LinkButton create href={route('artist.create')}>
-          <Plus size="small" />
+          <Plus size="normal" />
           Add artist
         </LinkButton>
       </div>
 
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10">
         {artists &&
           artists.data.map((artist) => (
             <Link
               title="Edit artist info"
               href={route('artist.edit', [artist.slug])}
-              as="button"
               key={artist.id}
             >
-              <div className="hover:bg-white border rounded shadow-sm p-5 hover:shadow-lg">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg flex md:text-xl font-bold text-sky-600 text-left">
-                    {artist.name}
-                  </h3>
-                  <Edit size="normal" />
+              <div className="hover:bg-white border rounded shadow-sm px-5 py-3 hover:shadow-lg group h-full flex flex-col justify-between">
+                <div>
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-lg flex md:text-xl font-bold text-left group-hover:text-blue-500">
+                      {artist.name}
+                    </h3>
+                    <div className="w-[20px] text-gray-200">
+                      <Edit size="normal" />
+                    </div>
+                  </div>
+                  {artist.albums_count === 1 ? (
+                    <p className="text-left">{artist.albums_count} album</p>
+                  ) : (
+                    <p className="text-left">{artist.albums_count} albums</p>
+                  )}
                 </div>
-                {artist.albums_count === 1 ? (
-                  <p className="text-left">{artist.albums_count} album</p>
-                ) : (
-                  <p className="text-left">{artist.albums_count} albums</p>
-                )}
+
+                <div className="flex justify-end">
+                  <LinkButton
+                    noButton
+                    small
+                    title="View artist page"
+                    href={route('show.artist', [artist.slug])}
+                  >
+                    View artist page
+                    <Chevron size="small" />
+                  </LinkButton>
+                </div>
               </div>
             </Link>
           ))}

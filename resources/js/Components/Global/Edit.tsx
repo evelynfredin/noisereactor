@@ -9,7 +9,7 @@ const Edit = ({ size }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={clsx('text-gray-200', {
+      className={clsx('inline-flex', {
         'h-4 w-4': size === 'small',
         'h-5 w-5': size === 'normal',
       })}
