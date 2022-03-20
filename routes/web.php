@@ -10,7 +10,6 @@ use App\Http\Controllers\Site\ArtistController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ReviewController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +64,8 @@ Route::controller(AdminAlbumController::class)
             Route::get('/admin/albums', 'index')->name('album.list');
             Route::get('/admin/album/new', 'create')->name('album.create');
             Route::post('/admin/album/store', 'store')->name('album.store');
+            Route::get('/admin/album/{album:id}/edit', 'edit')->name('album.edit');
+            Route::put('/admin/album/{album}', 'update')->name('album.update');
         }
     );
 

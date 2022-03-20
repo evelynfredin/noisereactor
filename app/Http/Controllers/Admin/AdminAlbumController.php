@@ -55,4 +55,17 @@ class AdminAlbumController extends Controller
         return redirect('/admin/albums')
             ->with('success', 'Album successfully created.');
     }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Album  $album
+     * @return \Inertia\Response
+     */
+    public function edit(Album $album): Response
+    {
+        return Inertia::render('Admin/EditAlbum', [
+            'album' => Album::findOrFail($album->id)
+        ]);
+    }
 }

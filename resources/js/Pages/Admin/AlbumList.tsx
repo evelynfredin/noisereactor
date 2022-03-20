@@ -12,8 +12,6 @@ type Props = {
 };
 
 const AlbumList = ({ albums }: Props) => {
-  console.log(albums);
-
   return (
     <Admin title="Albums">
       <div className="mt-10 flex justify-between items-center">
@@ -31,7 +29,7 @@ const AlbumList = ({ albums }: Props) => {
           >
             <Link
               title="Edit album info"
-              href={route('artist.edit', [album.id])}
+              href={route('album.edit', [album.id])}
             >
               <div className="flex items-start justify-between px-5 pb-3 group">
                 <h3 className="text-lg font-bold text-left group-hover:text-blue-500">
