@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Arr;
 use Inertia\Inertia;
+use App\Models\Album;
+use App\Models\Label;
 use Inertia\Response;
+use App\Models\Artist;
 use App\Services\AlbumService;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreAlbumRequest;
-use App\Models\Album;
-use App\Models\Artist;
-use App\Models\Label;
 
 class AdminAlbumController extends Controller
 {
@@ -67,5 +69,27 @@ class AdminAlbumController extends Controller
         return Inertia::render('Admin/EditAlbum', [
             'album' => Album::findOrFail($album->id)
         ]);
+    }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Album  $album
+     * @param  \App\Http\Requests\StoreAlbumRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Album $album, StoreAlbumRequest $request): RedirectResponse
+    {
+        if ($request->hasFile('cover')) {
+            $album->update(
+                collect($request->validated())
+                    ->merge(['cover' => $request->cover->store('uploads/albums')])
+                    ->toArray()
+            );
+            return redirect(route('album.list'))->with('success', 'Album successfully updated!');
+        }
+
+        $album->update(array_filter($request->validated()));
+        return redirect(route('album.list'))->with('success', 'Album successfully updated!');
     }
 }

@@ -2,6 +2,7 @@ import FormInput from '@/Components/Form/FormInput';
 import FormItemWrapper from '@/Components/Form/FormItemWrapper';
 import FormLabel from '@/Components/Form/FormLabel';
 import FormTextArea from '@/Components/Form/FormTextArea';
+import { Button } from '@/Components/Global/Button';
 import Admin from '@/Layouts/Admin';
 import { useForm } from '@inertiajs/inertia-react';
 import React, { ChangeEvent, FormEvent } from 'react';
@@ -122,6 +123,8 @@ const EditAlbum = ({ album }: Props) => {
             }
           />
         </FormItemWrapper>
+
+        <Button disabled={processing}>Update</Button>
       </form>
     </Admin>
   );
