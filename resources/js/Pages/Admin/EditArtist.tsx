@@ -69,14 +69,8 @@ const EditArtist = ({ artist }: Props) => {
     void post(route('artist.update', [artist.id]));
   };
 
-  const handleConfirm = (e) => {
-    e.preventDefault();
-    setDialog(true);
-  };
-
   const handleDelete = () => {
     void Inertia.delete(route('artist.destroy', [artist]), {
-      preserveScroll: true,
       onSuccess: () => setDialog(false),
     });
   };

@@ -1,11 +1,14 @@
+import Confirm from '@/Components/Admin/Confirm';
 import FormInput from '@/Components/Form/FormInput';
 import FormItemWrapper from '@/Components/Form/FormItemWrapper';
 import FormLabel from '@/Components/Form/FormLabel';
 import FormTextArea from '@/Components/Form/FormTextArea';
 import { Button } from '@/Components/Global/Button';
 import Admin from '@/Layouts/Admin';
+import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-react';
-import React, { ChangeEvent, FormEvent } from 'react';
+import clsx from 'clsx';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 interface UpdateInput extends HTMLInputElement {
   name: 'title' | 'edition' | 'released_date';
@@ -45,6 +48,8 @@ type Props = {
 };
 
 const EditAlbum = ({ album }: Props) => {
+  const [dialog, setDialog] = useState<boolean>(false);
+
   const { data, setData, post, processing, errors } = useForm<Form>({
     _method: 'PUT',
     title: album.title,
@@ -67,66 +72,88 @@ const EditAlbum = ({ album }: Props) => {
     void post(route('album.update', [album.id]));
   };
 
+  const handleDelete = () => {
+    void Inertia.delete(route('album.destroy', [album]), {
+      onSuccess: () => setDialog(false),
+    });
+  };
+
   return (
-    <Admin title="Name">
-      <form onSubmit={handleSubmit}>
-        <FormItemWrapper>
-          <FormLabel label="Album title:" htmlFor="title" />
-          <FormInput
-            type="text"
-            name="title"
-            onChange={handleChange}
-            value={data.title}
-          />
-        </FormItemWrapper>
+    <>
+      <div className={clsx(dialog ? 'block' : 'hidden')}>
+        <Confirm showDialog={() => setDialog(false)}>
+          <Button dangerBtn onClick={handleDelete}>
+            Delete
+          </Button>
+        </Confirm>
+      </div>
 
-        <FormItemWrapper>
-          <FormLabel label="Album edition:" htmlFor="edition" />
-          <FormInput
-            type="text"
-            name="edition"
-            onChange={handleChange}
-            value={data.edition}
-          />
-        </FormItemWrapper>
+      <Admin title={album.title}>
+        <div className="flex justify-end mt-5 md:mt-0">
+          <Button dangerBtn onClick={() => setDialog(true)}>
+            Delete
+          </Button>
+        </div>
 
-        <FormItemWrapper>
-          <FormLabel label="Description:" htmlFor="description" />
-          <FormTextArea
-            name="description"
-            value={data.description}
-            onChange={handleChange}
-          />
-        </FormItemWrapper>
+        <form onSubmit={handleSubmit} className="mb-20">
+          <FormItemWrapper>
+            <FormLabel label="Album title:" htmlFor="title" />
+            <FormInput
+              type="text"
+              name="title"
+              onChange={handleChange}
+              value={data.title}
+            />
+          </FormItemWrapper>
 
-        <FormItemWrapper>
-          <FormLabel label="Release date:" htmlFor="released_date" />
-          <FormInput
-            type="date"
-            name="released_date"
-            onChange={handleChange}
-            value={data.released_date}
-          />
-        </FormItemWrapper>
+          <FormItemWrapper>
+            <FormLabel label="Album edition:" htmlFor="edition" />
+            <FormInput
+              type="text"
+              name="edition"
+              onChange={handleChange}
+              value={data.edition}
+            />
+          </FormItemWrapper>
 
-        <FormItemWrapper>
-          <FormLabel label="Album cover:" htmlFor="cover" />
-          <FormInput
-            type="file"
-            name="cover"
-            onChange={(e) =>
-              setData(
-                'cover',
-                // @ts-expect-error
-                e.target.files[0]
-              )
-            }
-          />
-        </FormItemWrapper>
+          <FormItemWrapper>
+            <FormLabel label="Description:" htmlFor="description" />
+            <FormTextArea
+              name="description"
+              value={data.description}
+              onChange={handleChange}
+            />
+          </FormItemWrapper>
 
-        <Button disabled={processing}>Update</Button>
-      </form>
-    </Admin>
+          <FormItemWrapper>
+            <FormLabel label="Release date:" htmlFor="released_date" />
+            <FormInput
+              type="date"
+              name="released_date"
+              onChange={handleChange}
+              value={data.released_date}
+            />
+          </FormItemWrapper>
+
+          <FormItemWrapper>
+            <FormLabel label="Album cover:" htmlFor="cover" />
+            <FormInput
+              type="file"
+              name="cover"
+              onChange={(e) =>
+                setData(
+                  'cover',
+                  // @ts-expect-error
+                  e.target.files[0]
+                )
+              }
+            />
+          </FormItemWrapper>
+
+          <Button disabled={processing}>Update</Button>
+        </form>
+      </Admin>
+    </>
   );
 };
 

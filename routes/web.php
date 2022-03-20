@@ -66,6 +66,7 @@ Route::controller(AdminAlbumController::class)
             Route::post('/admin/album/store', 'store')->name('album.store');
             Route::get('/admin/album/{album:id}/edit', 'edit')->name('album.edit');
             Route::put('/admin/album/{album}', 'update')->name('album.update');
+            Route::delete('/admin/album/{album}/delete', 'destroy')->name('album.destroy');
         }
     );
 

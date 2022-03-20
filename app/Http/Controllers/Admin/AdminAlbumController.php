@@ -92,4 +92,16 @@ class AdminAlbumController extends Controller
         $album->update(array_filter($request->validated()));
         return redirect(route('album.list'))->with('success', 'Album successfully updated!');
     }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Album $album
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Album $album): RedirectResponse
+    {
+        $album->delete();
+        return redirect(route('album.list'))->with('success', 'Album has been deleted!');
+    }
 }
