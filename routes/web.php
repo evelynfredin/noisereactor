@@ -76,6 +76,7 @@ Route::controller(AdminReviewController::class)
     ->group(
         function () {
             Route::get('/admin/review/{album:id}', 'create')->name('review.create');
+            Route::post('/admin/review/store', 'store')->name('review.store');
         }
     );
 
