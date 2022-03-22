@@ -62,4 +62,16 @@ class AdminReviewController extends Controller
         $review->update($request->validated());
         return redirect(route('album.list'))->with('success', 'Review updated successfully!');
     }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Review $review
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Review $review)
+    {
+        $review->delete();
+        return redirect(route('album.list'))->with('success', 'Review deleted successfully!');
+    }
 }
