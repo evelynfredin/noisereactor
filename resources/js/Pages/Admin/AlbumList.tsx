@@ -55,23 +55,27 @@ const AlbumList = ({ albums }: Props) => {
             </Link>
             <div className="flex border-t rounded-b-md">
               <div className="w-1/2">
-                <LinkButton
-                  noButton
-                  small
-                  className="w-full py-3 flex justify-center items-center hover:text-white hover:bg-blue-600 rounded-bl-md"
-                  title={album.review ? 'Edit review' : 'Add review'}
-                  href={route('review.create', [album.id])}
-                >
-                  {album.review ? (
-                    <>
-                      <Edit size="small" /> Review
-                    </>
-                  ) : (
-                    <>
-                      <Plus size="small" /> Review
-                    </>
-                  )}
-                </LinkButton>
+                {album.review ? (
+                  <LinkButton
+                    noButton
+                    small
+                    className="w-full py-3 flex justify-center items-center hover:text-white hover:bg-blue-600 rounded-bl-md"
+                    title={album.review ? 'Edit review' : 'Add review'}
+                    href={route('review.edit', [album.review.id])}
+                  >
+                    <Edit size="small" /> Review
+                  </LinkButton>
+                ) : (
+                  <LinkButton
+                    noButton
+                    small
+                    className="w-full py-3 flex justify-center items-center hover:text-white hover:bg-blue-600 rounded-bl-md"
+                    title={album.review ? 'Edit review' : 'Add review'}
+                    href={route('review.create', [album.id])}
+                  >
+                    <Plus size="small" /> Review
+                  </LinkButton>
+                )}
               </div>
               <div className="border-l w-1/2">
                 <LinkButton

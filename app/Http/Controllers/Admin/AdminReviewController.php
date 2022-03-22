@@ -36,4 +36,30 @@ class AdminReviewController extends Controller
         return redirect(route('album.list'))
             ->with('success', 'Review added successfully!');
     }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Review  $review
+     * @return \Inertia\Response
+     */
+    public function edit(Review $review): Response
+    {
+        return Inertia::render('Admin/EditReview', [
+            'review' => Review::findOrFail($review->id)
+        ]);
+    }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Review  $review
+     * @param  \App\Http\Requests\StoreReviewRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Review $review, StoreReviewRequest $request): RedirectResponse
+    {
+        $review->update($request->validated());
+        return redirect(route('album.list'))->with('success', 'Review updated successfully!');
+    }
 }

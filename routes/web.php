@@ -77,6 +77,8 @@ Route::controller(AdminReviewController::class)
         function () {
             Route::get('/admin/review/{album:id}', 'create')->name('review.create');
             Route::post('/admin/review/store', 'store')->name('review.store');
+            Route::get('/admin/review/edit/{review:id}', 'edit')->name('review.edit');
+            Route::put('/admin/review/update/{review}', 'update')->name('review.update');
         }
     );
 

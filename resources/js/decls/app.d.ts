@@ -48,6 +48,7 @@ declare namespace App {
   interface Review {
     id: number;
     album: Album;
+    album_id: number;
     excerpt: string;
     content: string;
     is_published: boolean;
