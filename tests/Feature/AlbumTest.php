@@ -68,7 +68,6 @@ it('protects admin album page from unauthenticated user', function () {
 
 
 it('can update album when authenticated', function () {
-    Label::factory(6)->create();
     Artist::factory(1)->hasAlbums(3)->create();
 
     $chosenOne = Album::first();
@@ -91,7 +90,6 @@ it('can update album when authenticated', function () {
 });
 
 it('cant update album when unauthenticated', function () {
-    Label::factory(6)->create();
     Artist::factory(1)->hasAlbums(3)->create();
 
     $chosenOne = Album::first();
@@ -109,7 +107,6 @@ it('cant update album when unauthenticated', function () {
 
 it('can delete album when authenticated', function () {
     $user = User::factory()->create();
-    Label::factory(6)->create();
     Artist::factory(3)->hasAlbums(2)->create();
 
     actingAs($user)
@@ -122,7 +119,6 @@ it('can delete album when authenticated', function () {
 });
 
 it('cant delete artist when unauthenticated', function () {
-    Label::factory(6)->create();
     $albums = Artist::factory(3)->hasAlbums(2)->create();
     delete(route('album.destroy', $albums->first()))
         ->assertStatus(302);

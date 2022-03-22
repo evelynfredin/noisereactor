@@ -3,12 +3,15 @@
 use App\Models\Album;
 use App\Models\Artist;
 use App\Models\Label;
+use App\Models\Review;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
-
 use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\assertDatabaseMissing;
+use function Pest\Laravel\delete;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
+use function Pest\Laravel\put;
 
 it('renders reviews page')
     ->get('/reviews')
@@ -85,5 +88,79 @@ it('protects the review store route for unauth user', function () {
         'is_published' => true,
         'album_id' => $album->id
     ])
+        ->assertStatus(302);
+});
+
+it('can update review when authenticated', function () {
+    Artist::factory(2)->hasAlbums(1)->create();
+    Review::factory()->create([
+        'excerpt' => 'Very bad excerpt',
+        'content' => 'Lorem ipsum',
+        'is_published' => true,
+        'album_id' => 1
+    ]);
+
+    actingAs(User::factory()->create())
+        ->followingRedirects()
+        ->put(route('review.update', 1), [
+            'excerpt' => 'Fool proof your app with Pest',
+            'content' => 'Lorem ipsum',
+            'is_published' => true,
+            'album_id' => 1
+        ])
+        ->assertValid();
+
+    assertDatabaseHas('reviews', [
+        'excerpt' => 'Fool proof your app with Pest',
+    ]);
+});
+
+it('protects review update route from unauthenticated', function () {
+    Artist::factory(2)->hasAlbums(1)->create();
+    Review::factory()->create([
+        'excerpt' => 'Very bad excerpt',
+        'content' => 'Lorem ipsum',
+        'is_published' => true,
+        'album_id' => 1
+    ]);
+
+    put(route('review.update', 1), [
+        'excerpt' => 'Fool proof your app with Pest',
+        'content' => 'Lorem ipsum',
+        'is_published' => true,
+        'album_id' => 1
+    ])
+        ->assertStatus(302);
+});
+
+it('can delete review when authenticated', function () {
+    $user = User::factory()->create();
+    Artist::factory(2)->hasAlbums(2)->create();
+    Review::factory()->create([
+        'excerpt' => 'Very bad excerpt',
+        'content' => 'Lorem ipsum',
+        'is_published' => true,
+        'album_id' => 1
+    ]);
+
+    actingAs($user)
+        ->followingRedirects()
+        ->delete(route('review.destroy', Review::first()));
+
+    assertDatabaseMissing('reviews', [
+        'id' => 1
+    ]);
+});
+
+it('cant delete reviews when unauthenticated', function () {
+    Artist::factory(2)->hasAlbums(2)->create();
+    Review::factory()->create([
+        'excerpt' => 'Very bad excerpt',
+        'content' => 'Lorem ipsum',
+        'is_published' => true,
+        'album_id' => 1
+    ]);
+
+    delete(route('review.destroy', Review::first()))
         ->assertStatus(302);
 });
