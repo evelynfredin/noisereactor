@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Artist;
+use App\Models\Label;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class AlbumFactory extends Factory
         return [
             'title' => $this->faker->words(rand(1, 3), true),
             'edition' => 'Standard',
-            'label_id' => $this->faker->numberBetween(rand(1, 6), true),
+            'label_id' => Label::factory(),
             'description' => $this->faker->paragraph(mt_rand(4, 6)),
             'released_date' => $this->faker->date($format = 'Y-m-d', $max = 'now')
         ];

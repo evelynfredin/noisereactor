@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class
         ]);
 
-        Label::factory(6)->create();
         $genres = Genre::factory(6)->create();
         Artist::factory(12)->hasAlbums(3)->create();
         Artist::all()->each(function ($artist) use ($genres) {
