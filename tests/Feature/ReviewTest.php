@@ -7,6 +7,8 @@ use App\Models\Review;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\assertDatabaseMissing;
+use function Pest\Laravel\delete;
 use function Pest\Laravel\get;
 use function Pest\Laravel\post;
 use function Pest\Laravel\put;
@@ -128,5 +130,37 @@ it('protects review update route from unauthenticated', function () {
         'is_published' => true,
         'album_id' => 1
     ])
+        ->assertStatus(302);
+});
+
+it('can delete review when authenticated', function () {
+    $user = User::factory()->create();
+    Artist::factory(2)->hasAlbums(2)->create();
+    Review::factory()->create([
+        'excerpt' => 'Very bad excerpt',
+        'content' => 'Lorem ipsum',
+        'is_published' => true,
+        'album_id' => 1
+    ]);
+
+    actingAs($user)
+        ->followingRedirects()
+        ->delete(route('review.destroy', Review::first()));
+
+    assertDatabaseMissing('reviews', [
+        'id' => 1
+    ]);
+});
+
+it('cant delete reviews when unauthenticated', function () {
+    Artist::factory(2)->hasAlbums(2)->create();
+    Review::factory()->create([
+        'excerpt' => 'Very bad excerpt',
+        'content' => 'Lorem ipsum',
+        'is_published' => true,
+        'album_id' => 1
+    ]);
+
+    delete(route('review.destroy', Review::first()))
         ->assertStatus(302);
 });
