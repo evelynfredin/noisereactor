@@ -17,9 +17,9 @@ const Admin = ({ children, title }: PropsWithChildren<Props>) => {
       <div className="bg-slate-800 flex flex-col lg:flex-row overflow-y-auto">
         <Sidebar />
         <div className="bg-gray-50 lg:rounded-tl-3xl lg:rounded-bl-3xl w-full h-screen overflow-y-auto">
-          <main className="px-3 md:px-10">
+          <main className="px-3 md:px-10 mt-28 lg:mt-10">
             <StatusMessages />
-            <div className="mt-28 lg:mt-10 flex justify-between items-center">
+            <div className="flex justify-between items-center">
               <Heading h1 title={title} />
             </div>
             {children}

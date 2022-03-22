@@ -57,17 +57,22 @@ class AdminArtistController extends Controller
         ]);
     }
 
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \App\Models\Artist  $artist
+     * @param  \App\Http\Requests\StoreArtistRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Artist $artist, StoreArtistRequest $request)
     {
-        if ($request->validated()) {
-            if ($request->hasFile('pic')) {
-                $artist->update(
-                    collect($request->validated())
-                        ->merge(['pic' => $request->pic->store('uploads/artist')])
-                        ->toArray()
-                );
-                return redirect(route('artist.list'))->with('success', 'Artist successfully updated!');
-            }
+        if ($request->hasFile('pic')) {
+            $artist->update(
+                collect($request->validated())
+                    ->merge(['pic' => $request->pic->store('uploads/artist')])
+                    ->toArray()
+            );
+            return redirect(route('artist.list'))->with('success', 'Artist successfully updated!');
         }
 
         $artist->update(array_filter($request->validated()));

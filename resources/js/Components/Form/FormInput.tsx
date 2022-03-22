@@ -5,9 +5,10 @@ type Props = {
   name: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   value?: string | number | readonly string[] | undefined;
+  checked?: boolean;
 };
 
-const FormInput = ({ type, name, onChange, value }: Props) => {
+const FormInput = ({ type, name, onChange, value, checked }: Props) => {
   return (
     <input
       className="bg-gray-50 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 focus:ring-blue-500"
@@ -15,6 +16,7 @@ const FormInput = ({ type, name, onChange, value }: Props) => {
       name={name}
       onChange={onChange}
       value={value}
+      checked={checked}
     />
   );
 };

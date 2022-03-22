@@ -39,7 +39,7 @@ it('prevents unauthenticated user from creating an artist', function () {
         ->assertStatus(302);
 });
 
-it('renders the artist page for authenticated user', function () {
+it('renders the admin artist page for authenticated user', function () {
     $user = User::factory()->create();
 
     post('/login', [
@@ -63,14 +63,14 @@ it('can update artist when authenticated', function () {
     actingAs(User::factory()->create())
         ->followingRedirects()
         ->put(route('artist.update', $artist->first()), [
-            'name' => 'Updated email name',
+            'name' => 'Updated artist name',
             'bio' => 'Updated email bio',
             'website' => 'https://noisereactor.test',
         ])
         ->assertValid();
 
     assertDatabaseHas('artists', [
-        'name' => 'Updated email name',
+        'name' => 'Updated artist name',
     ]);
 });
 
@@ -78,7 +78,7 @@ it('cant update artist when unauthenticated', function () {
 
     $artist = Artist::factory()->create();
     put(route('artist.update', $artist->first()), [
-        'name' => 'Updated email name',
+        'name' => 'Updated artist name',
         'bio' => 'Updated email bio',
         'website' => 'https://noisereactor.test',
     ])
@@ -98,8 +98,7 @@ it('can delete artist when authenticated', function () {
     ]);
 });
 
-it('can delete artist when unauthenticated', function () {
-
+it('cant delete artist when unauthenticated', function () {
     Artist::factory(5)->create();
     delete(route('artist.destroy', 1))
         ->assertStatus(302);

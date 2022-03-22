@@ -76,8 +76,8 @@ const CreateAlbum = ({ artists, labels, artist_id, label_id }: Props) => {
   };
 
   return (
-    <Admin title="Create album">
-      <form onSubmit={handleSubmit}>
+    <Admin title="New album">
+      <form onSubmit={handleSubmit} className="my-10">
         <FormItemWrapper>
           <FormLabel label="Album title:" htmlFor="title" />
           <FormInput

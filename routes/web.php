@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAlbumController;
 use App\Http\Controllers\Admin\AdminArtistController;
+use App\Http\Controllers\Admin\AdminReviewController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GenreController;
 use App\Http\Controllers\Admin\LabelController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\Site\ArtistController;
 use App\Http\Controllers\Site\HomeController;
 use App\Http\Controllers\Site\ReviewController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +65,20 @@ Route::controller(AdminAlbumController::class)
             Route::get('/admin/albums', 'index')->name('album.list');
             Route::get('/admin/album/new', 'create')->name('album.create');
             Route::post('/admin/album/store', 'store')->name('album.store');
+            Route::get('/admin/album/{album:id}/edit', 'edit')->name('album.edit');
+            Route::put('/admin/album/{album}', 'update')->name('album.update');
+            Route::delete('/admin/album/{album}/delete', 'destroy')->name('album.destroy');
+        }
+    );
+
+Route::controller(AdminReviewController::class)
+    ->middleware('auth')
+    ->group(
+        function () {
+            Route::get('/admin/review/{album:id}', 'create')->name('review.create');
+            Route::post('/admin/review/store', 'store')->name('review.store');
+            Route::get('/admin/review/edit/{review:id}', 'edit')->name('review.edit');
+            Route::put('/admin/review/update/{review}', 'update')->name('review.update');
         }
     );
 

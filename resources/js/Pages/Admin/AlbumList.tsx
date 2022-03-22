@@ -12,8 +12,6 @@ type Props = {
 };
 
 const AlbumList = ({ albums }: Props) => {
-  console.log(albums);
-
   return (
     <Admin title="Albums">
       <div className="mt-10 flex justify-between items-center">
@@ -31,7 +29,7 @@ const AlbumList = ({ albums }: Props) => {
           >
             <Link
               title="Edit album info"
-              href={route('artist.edit', [album.id])}
+              href={route('album.edit', [album.id])}
             >
               <div className="flex items-start justify-between px-5 pb-3 group">
                 <h3 className="text-lg font-bold text-left group-hover:text-blue-500">
@@ -57,23 +55,27 @@ const AlbumList = ({ albums }: Props) => {
             </Link>
             <div className="flex border-t rounded-b-md">
               <div className="w-1/2">
-                <LinkButton
-                  noButton
-                  small
-                  className="w-full py-3 flex justify-center items-center hover:text-white hover:bg-blue-600 rounded-bl-md"
-                  title={album.review ? 'Edit review' : 'Add review'}
-                  href={route('show.album', [album.id])}
-                >
-                  {album.review ? (
-                    <>
-                      <Edit size="small" /> Review
-                    </>
-                  ) : (
-                    <>
-                      <Plus size="small" /> Review
-                    </>
-                  )}
-                </LinkButton>
+                {album.review ? (
+                  <LinkButton
+                    noButton
+                    small
+                    className="w-full py-3 flex justify-center items-center hover:text-white hover:bg-blue-600 rounded-bl-md"
+                    title={album.review ? 'Edit review' : 'Add review'}
+                    href={route('review.edit', [album.review.id])}
+                  >
+                    <Edit size="small" /> Review
+                  </LinkButton>
+                ) : (
+                  <LinkButton
+                    noButton
+                    small
+                    className="w-full py-3 flex justify-center items-center hover:text-white hover:bg-blue-600 rounded-bl-md"
+                    title={album.review ? 'Edit review' : 'Add review'}
+                    href={route('review.create', [album.id])}
+                  >
+                    <Plus size="small" /> Review
+                  </LinkButton>
+                )}
               </div>
               <div className="border-l w-1/2">
                 <LinkButton

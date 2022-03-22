@@ -34,7 +34,8 @@ class AlbumController extends Controller
     public function show(Album $album): Response
     {
         return Inertia::render('Site/ShowAlbum', [
-            'album' => Album::with(['artist', 'label', 'review'])->findOrFail($album->id),
+            'album' => Album::with(['artist', 'label', 'review'])
+                ->findOrFail($album->id),
             'discography' => Album::where('artist_id', '=', $album->artist_id)
                 ->where('id', '!=', $album->id)
                 ->get()
