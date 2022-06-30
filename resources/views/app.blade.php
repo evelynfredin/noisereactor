@@ -12,15 +12,12 @@
 
     <!-- Scripts -->
     @routes
-    @vite('resources/js/app.js')
+    @vite('resources/js/app.tsx')
 </head>
 
 <body class="font-body  text-gray-700 antialiased bg-gray-50">
     @inertia
 
-    @env ('local')
-    <script src="http://localhost:8080/js/bundle.js"></script>
-    @endenv
 </body>
 
 </html>

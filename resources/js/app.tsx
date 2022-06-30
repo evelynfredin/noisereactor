@@ -8,7 +8,7 @@ const appName =
 
 void createInertiaApp({
   title: (title) => `${title} | ${appName}`,
-  resolve: (name) => require(`./Pages/${name}`),
+  resolve: (name) => import(`./Pages/${name}`),
   setup({ el, App, props }) {
     return render(<App {...props} />, el);
   },

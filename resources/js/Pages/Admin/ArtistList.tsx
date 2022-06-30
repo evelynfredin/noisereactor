@@ -11,8 +11,6 @@ type Props = {
 };
 
 const ArtistList = ({ artists }: Props) => {
-  console.log(artists);
-
   return (
     <Admin title="Artists">
       <div className="mt-10 flex justify-between items-center">

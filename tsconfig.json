@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "target": "es5",
+    "target": "es6",
     "module": "es2020",
     "moduleResolution": "node",
     "strict": true, // Enable strict type-checking options
