@@ -75,6 +75,8 @@ const EditArtist = ({ artist }: Props) => {
     });
   };
 
+  console.log(data.pic);
+
   return (
     <>
       <div className={clsx(dialog ? 'block' : 'hidden')}>
